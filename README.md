@@ -1,5 +1,5 @@
 # CS480: Course Registration Website
-By: Samuel Haddad, Pradnya Sonawane
+By: Samuel Haddad, Pradnya Sonawane, Ayush Shah
 
 In our project, we will be making a course registration website that will primarily involve students (our users in this case) registering for courses at an institution such as UIC. On top of registration, our database and website will support schedule planning, where a student can say what courses they want to take, and we will show what a schedule of those courses would look like all together. 
 
