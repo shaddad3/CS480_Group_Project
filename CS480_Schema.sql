@@ -1,4 +1,3 @@
--- Active: 1732242034886@@127.0.0.1@3306@csdb
 CREATE TABLE Administrator (
     UIN INT PRIMARY KEY,
     name VARCHAR(100),
