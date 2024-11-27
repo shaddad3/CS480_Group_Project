@@ -10,8 +10,8 @@ def home():
 @app.route("/administrator/<administrator_id>", methods=["GET"])
 def get_administrator(UIN):
     try:
-        user = database.get_administrator(UIN)
-        if user:
+        administrator = database.get_administrator(UIN)
+        if administrator:
             return jsonify(administrator)
         else:
             return jsonify({"error": "Administrator not found"}), 404
@@ -19,7 +19,7 @@ def get_administrator(UIN):
         return jsonify({"error": str(e)}), 500
 
 @app.route("/administrator", methods=["POST"])
-def add_dministrator():
+def add_administrator():
     data = request.json
     try:
         result = database.add_administrator(
