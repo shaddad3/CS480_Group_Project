@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return jsonify({"message": "Welcome to the Course Registration!"})
+    return jsonify({"message": "Welcome to Course Registration!"})
 
 #Administrator
 
@@ -31,7 +31,7 @@ def add_administrator():
             password=data["password"],  # Ensure to hash the password in production
             user_id=data["user_id"],
         )
-        return jsonify({"success": result, "message": "Administrator added successfully!"}), 201
+        return jsonify({"success": result, "message": "Administrator added!"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -41,7 +41,7 @@ def delete_administrator(UIN):
     try:
         result = database.delete_administrator(UIN)
         if result:
-            return jsonify({"message": "Administrator deleted successfully"})
+            return jsonify({"message": "Administrator deleted  "})
         else:
             return jsonify({"error": "Administrator not found"}), 404
     except Exception as e:
@@ -74,7 +74,7 @@ def add_instructor():
             dept_name=data["dept_name"],  # Ensure to hash the password in production
             course_id=data["course_id"],
         )
-        return jsonify({"success": result, "message": "Instructor added successfully!"}), 201
+        return jsonify({"success": result, "message": "Instructor added!"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -84,7 +84,7 @@ def delete_instructor(UIN):
     try:
         result = database.delete_instructor(UIN)
         if result:
-            return jsonify({"message": "Instructor deleted successfully"})
+            return jsonify({"message": "Instructor deleted"})
         else:
             return jsonify({"error": "Instructor not found"}), 404
     except Exception as e:
@@ -113,7 +113,7 @@ def add_department():
             dept_name=data["dept_name"],
             dept_head=data["dept_head"],
         )
-        return jsonify({"success": result, "message": "Department added successfully!"}), 201
+        return jsonify({"success": result, "message": "Department added!"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -123,7 +123,7 @@ def delete_department(dept_id):
     try:
         result = database.delete_department(dept_id)
         if result:
-            return jsonify({"message": "Department deleted successfully"})
+            return jsonify({"message": "Department deleted"})
         else:
             return jsonify({"error": "Department not found"}), 404
     except Exception as e:
@@ -157,7 +157,7 @@ def add_student():
             admin_id=["admin_id"],
 
         )
-        return jsonify({"success": result, "message": "Student added successfully!"}), 201
+        return jsonify({"success": result, "message": "Student added "}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -166,7 +166,7 @@ def delete_student(UIN):
     try:
         result = database.delete_student(UIN)
         if result:
-            return jsonify({"message": "Student deleted successfully"})
+            return jsonify({"message": "Student deleted"})
         else:
             return jsonify({"error": "Student not found"}), 404
     except Exception as e:
@@ -205,7 +205,7 @@ def add_course():
             prereq_id=data["prereq_id"],
 
         )
-        return jsonify({"success": result, "message": "Course added successfully!"}), 201
+        return jsonify({"success": result, "message": "Course added!"}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
@@ -214,7 +214,7 @@ def delete_course(course_id):
     try:
         result = database.delete_course(course_id)
         if result:
-            return jsonify({"message": "Course deleted successfully"})
+            return jsonify({"message": "Course deleted"})
         else:
             return jsonify({"error": "Course not found"}), 404
     except Exception as e:
