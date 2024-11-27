@@ -15,7 +15,6 @@ def get_connection():
 #administrator
 
 def get_administrator(UIN):
-    """Fetch Administrator details by UIN."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -24,7 +23,6 @@ def get_administrator(UIN):
             return cursor.fetchone()
 
 def add_administrator(UIN, name, email, password, user_id):
-    """Insert a new administrator."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -37,7 +35,6 @@ def add_administrator(UIN, name, email, password, user_id):
         return True
     
 def delete_administrator(UIN):
-    """Delete a Administrator by UIN."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -49,7 +46,6 @@ def delete_administrator(UIN):
 #instructor
 
 def get_instructor(UIN):
-    """Fetch Instructor details by UIN."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -58,7 +54,6 @@ def get_instructor(UIN):
             return cursor.fetchone()
 
 def add_instructor(UIN, name, email, dept_name, course_id, admin_id):
-    """Insert a new Instructor."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -72,7 +67,6 @@ def add_instructor(UIN, name, email, dept_name, course_id, admin_id):
     
 
 def delete_instructor(UIN):
-    """Delete a Instructor by UIN."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -85,7 +79,6 @@ def delete_instructor(UIN):
 #Department
 
 def get_department(dept_id):
-    """Fetch Department details by dept_id."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -94,7 +87,6 @@ def get_department(dept_id):
             return cursor.fetchone()
 
 def add_department(dept_id, dept_name, dept_head):
-    """Insert a new Department."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -107,7 +99,6 @@ def add_department(dept_id, dept_name, dept_head):
         return True
     
 def delete_department(dept_id):
-    """Delete a department by dept_id."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -117,7 +108,6 @@ def delete_department(dept_id):
 #Student
 
 def get_student(UIN):
-    """Fetch Student details by UIN."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -126,7 +116,6 @@ def get_student(UIN):
             return cursor.fetchone()
 
 def add_student(UIN, name, email, user_id, password, level, admin_id):
-    """Insert a new Student."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -139,7 +128,6 @@ def add_student(UIN, name, email, user_id, password, level, admin_id):
         return True
     
 def delete_student(UIN):
-    """Delete a Student by UIN."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -149,7 +137,6 @@ def delete_student(UIN):
 #Course
 
 def get_course(course_id):
-    """Fetch Course details by course_id."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -158,7 +145,6 @@ def get_course(course_id):
             return cursor.fetchone()
 
 def add_course(course_id, course_name, credits, dept_name, instructor, instruction_method, admin_id, day, time, location, availability, prereq_id):
-    """Insert a new course."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
@@ -171,7 +157,6 @@ def add_course(course_id, course_name, credits, dept_name, instructor, instructi
         return True
     
 def delete_course(course_id):
-    """Delete a course by course_id."""
     connection = get_connection()
     with connection:
         with connection.cursor() as cursor:
