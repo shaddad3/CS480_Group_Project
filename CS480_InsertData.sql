@@ -36,7 +36,7 @@ INSERT INTO Courses VALUES ('CS111', 'Program Desgin I', 3, 'CS', 'Dr. David Hay
 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'CS141'),
 
 ('CS480', 'Database Systems', 3, 'CS', 'Dr. Sidharth Kumar', 'In-Person', 
-111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'CS251');
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'CS251'),
 
 ('M111', 'Algebra', 3, 'MATH', 'Dr. David Hayes', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
@@ -48,7 +48,7 @@ INSERT INTO Courses VALUES ('CS111', 'Program Desgin I', 3, 'CS', 'Dr. David Hay
 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'M141'),
 
 ('M480', 'Geometery', 3, 'MATH', 'Dr. Sidharth Kumar', 'In-Person', 
-111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'M251');
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'M251'),
 
 ('BIO111', 'Human Anatomy', 3, 'BIOLOGY', 'Dr. David Hayes', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
