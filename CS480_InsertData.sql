@@ -11,10 +11,27 @@ INSERT INTO Instructor VALUES (101, 'Dr. Sidharth Kumar', 'sidharth@uic.edu', 'C
 (102, 'Dr. Adam Koehler', 'adam@uic.edu', 'CS', 'CS251', 111),
 (103, 'Dr. Ellen Kidane', 'ellen@uic.edu', 'CS', 'CS141', 111),
 (104, 'Dr. David Hayes', 'david@uic.edu', 'CS', 'CS111', 111);
+(105, 'Dr. Olivia Wilson', 'email105@uic.edu', 'MATH',),
+(106, 'Dr. Olivia Davis', 'email106@uic.edu', 'MATH'),
+(107, 'Dr. Isabella Garcia', 'email107@uic.edu', 'MATH'),
+(108, 'Dr. Robert Haddad', 'email108@uic.edu', 'BIOLOGY'),
+(109, 'Dr. John Garcia', 'email109@uic.edu', 'BIOLOGY'),
+(110, 'Dr. John Lopez', 'email110@uic.edu',  'BIOLOGY'),
+(111, 'Dr. John Jones', 'email111@uic.edu', 'PSYCHOLOGY',),
+(112, 'Dr. Sophia Davis', 'email112@uic.edu', 'PSYCHOLOGY',),
+(113, 'Dr. David Lopez', 'email113@uic.edu', 'PSYCHOLOGY',),
+(114, 'Dr. Alice Garcia', 'email114@uic.edu', 'PSYCHOLOGY'),
+(115, 'Dr. Robert Wilson', 'email115@uic.edu', 'HISTORY'),
+(116, 'Dr. Isabella Lopez', 'email116@uic.edu', 'HISTORY'),
+(117, 'Dr. John Davis', 'email117@uic.edu', 'HISTORY'),
+(118, 'Dr. Sammy Martinez', 'email118@uic.edu', 'HISTORY'),
+(119, 'Dr. David Garcia', 'email119@uic.edu'),
+(120, 'Dr. Isabella Brown', 'email120@uic.edu');
+
 INSERT INTO Courses VALUES ('CS111', 'Program Desgin I', 3, 'CS', 'Dr. David Hayes', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
 
-('CS141', 'Program Desgin II', 3, 'CS', 'Dr. Ellen Kidane', 'In-Person', 
+('CS141', 'Program Desgin II', 3, 'CS', 'Dr. Ellen Kidane', 'Online', 
 111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'CS111'),
 
 ('CS251', 'Data Structures & Algorithms', 3, 'CS', 'Dr. Adam Koehler', 'In-Person', 
@@ -22,6 +39,34 @@ INSERT INTO Courses VALUES ('CS111', 'Program Desgin I', 3, 'CS', 'Dr. David Hay
 
 ('CS480', 'Database Systems', 3, 'CS', 'Dr. Sidharth Kumar', 'In-Person', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'CS251');
+
+('M111', 'Algebra', 3, 'MATH', 'Dr. David Hayes', 'In-Person', 
+111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
+
+('M141', 'Statistics', 3, 'MATH', 'Dr. Ellen Kidane', 'In-Person', 
+111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'M111'),
+
+('M251', 'Trigonometery', 3, 'MATH', 'Dr. Adam Koehler', 'In-Person', 
+111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'M141'),
+
+('M480', 'Geometery', 3, 'MATH', 'Dr. Sidharth Kumar', 'In-Person', 
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'M251');
+
+('BIO111', 'Human Anatomy', 3, 'BIOLOGY', 'Dr. David Hayes', 'In-Person', 
+111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
+
+('BIO141', 'Plant Anatomy', 3, 'BIOLOGY', 'Dr. Ellen Kidane', 'In-Person', 
+111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'BIO111'),
+
+('BIO251', 'Zoology', 3, 'BIOLOGY', 'Dr. Adam Koehler', 'In-Person', 
+111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'BIO141'),
+
+('PSY480', 'Child Psychology', 3, 'PSYCHOLOGY', 'Dr. Sidharth Kumar', 'Online', 
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251');
+
+('PSY480', 'Mental Health Awareness', 3, 'PSYCHOLOGY', 'Dr. Sidharth Kumar', 'In-Person', 
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251');
+
 
 INSERT INTO Teaches VALUES (101, 'CS480'), (102, 'CS251'), (103, 'CS141'), (104, 'CS111');
 
