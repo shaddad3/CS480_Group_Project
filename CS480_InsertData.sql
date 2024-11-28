@@ -2,8 +2,11 @@ INSERT INTO Administrator VALUES (111, 'Sammy', 'sammy@uic.edu', 'sammy', 'abc')
 (222, 'Hrushikesh', 'hrushi@uic.edu', 'hrushi', 'def'),
 (333, 'Pradnya', 'pradnya@uic.edu', 'pradnya', 'ghi'),
 (444, 'Ayush', 'ayush@uic.edu', 'ayush', 'jkl');
-INSERT INTO Department VALUES (1, 'CS', 'Dr. Robert Sloan');
-INSERT INTO Department VALUES (2, 'MATH', 'Dr. Julius Ross');
+INSERT INTO Department VALUES (1, 'CS', 'Dr. Robert Sloan'),
+(2, 'MATH', 'Dr. Julius Ross'),
+(3, 'BIOLOGY, Dr. Mathew Perry')
+(4, 'PSYCHOLOGY', 'Dr. Anne Frank'),
+(5, 'HISTORY', 'Dr. William Shakespear');
 INSERT INTO Instructor VALUES (101, 'Dr. Sidharth Kumar', 'sidharth@uic.edu', 'CS', 'CS480', 111);
 INSERT INTO Instructor VALUES (102, 'Dr. Adam Koehler', 'adam@uic.edu', 'CS', 'CS251', 111);
 INSERT INTO Instructor VALUES (103, 'Dr. Ellen Kidane', 'ellen@uic.edu', 'CS', 'CS141', 111);
