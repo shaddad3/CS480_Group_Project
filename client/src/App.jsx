@@ -25,6 +25,11 @@ function App() {
                 {tablename}
               </th>
             </tr>
+            <tr>
+              {Object.keys(data[tablename][0]).map((key) => (
+                <th key={key}>{key}</th>
+              ))}
+            </tr>
           </thead>
           <tbody>
             {data[tablename].map((table, index) => (
