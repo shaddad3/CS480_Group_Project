@@ -60,13 +60,22 @@ INSERT INTO Courses VALUES ('CS111', 'Program Desgin I', 3, 'CS', 'Dr. David Hay
 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'BIO141'),
 
 ('PSY480', 'Child Psychology', 3, 'PSYCHOLOGY', 'Dr. Sidharth Kumar', 'Online', 
-111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251');
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251'),
 
 ('PSY480', 'Mental Health Awareness', 3, 'PSYCHOLOGY', 'Dr. Sidharth Kumar', 'In-Person', 
-111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251');
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251')
+
+('HIS480', 'West History', 3, 'HISTORY', 'Dr. Sidharth Kumar', 'Online', 
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'HIS251')
+
+('HIS480', 'East History', 3, 'HISTORY', 'Dr. Sidharth Kumar', 'In-Person', 
+111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'HIS251');
 
 
-INSERT INTO Teaches VALUES (101, 'CS480'), (102, 'CS251'), (103, 'CS141'), (104, 'CS111');
+INSERT INTO Teaches VALUES (101, 'CS480'), (102, 'CS251'), (103, 'CS141'), (104, 'CS111'),
+(105, 'M480'), (106, 'M251'), (107, 'M141'), (108, 'CS111'),
+(109, 'BIO480'), (110, 'BIO251'), (111, 'PSY141'), (112, 'PSY111'),
+(113, 'PSY480'), (114, 'PSY251'), (115, 'HIS141'), (116, 'HIS111'), (117, 'HIS141'), (118, 'HIS111');
 
 INSERT INTO Student VALUES (1, 'Olivia Haddad', 'email1@uic.edu', 'user_1', 'pass_574', 'Junior', 111),
 (2, 'Emma Garcia', 'email2@uic.edu', 'user_2', 'pass_550', 'Senior', 333),
@@ -168,4 +177,5 @@ INSERT INTO Student VALUES (1, 'Olivia Haddad', 'email1@uic.edu', 'user_1', 'pas
 (98, 'Isabella Martinez', 'email98@uic.edu', 'user_98', 'pass_453', 'Senior', 444),
 (99, 'Emma Johnson', 'email99@uic.edu', 'user_99', 'pass_898', 'Junior', 222),
 (100, 'Michael Davis', 'email100@uic.edu', 'user_100', 'pass_947', 'Senior', 444);
+
 INSERT INTO Takes VALUES (1, 'CS480', 1000);
