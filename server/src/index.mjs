@@ -2,37 +2,43 @@ import express from "express";
 import mysql from "mysql2";
 import cors from "cors";
 
-// import bcrypt from "bcryptjs";
-// import bodyParser from "body-parser";
-// import path from "path";
-// import { fileURLToPath } from "url";
+import router from "./routes/routes.mjs";
+import database_connection from "./database_connection/database_connection.mjs";
 
-import router from "./routes/router.mjs";
+const databaseConfiguration = {
+  host: "localhost",
+  user: "root",
+  password: "CS480",
+  database: "course_registration_website",
+};
+
+const corsOptions = {
+  // origin: "",
+  origin: "http://localhost:5173",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true,
+  maxAge: 600,
+};
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    // origin: "",
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
-    credentials: true,
-    maxAge: 600,
-  })
-);
+app.use(cors(corsOptions));
 
-const db = mysql.createConnection({
-  host: "localhost:3306",
-  user: "administrator",
-  password: "OurProjectRockx",
-  database: "course_registration_website",
-});
+async function startServer() {
+  try {
+    await database_connection;
+    console.log("[server]: Connected to the Database");
 
-db.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to MySQL");
-});
+    app.use(router);
 
-app.use(router);
+    app.listen(port, () => {
+      console.log(`[server]: Server is running at http://localhost:${port}`);
+    });
+  } catch (error) {
+    console.log("[server]: Error connecting to the Database", error);
+  }
+}
+
+startServer();
