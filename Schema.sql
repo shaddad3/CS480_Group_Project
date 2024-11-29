@@ -6,7 +6,7 @@ CREATE TABLE Administrator (
     UIN INT PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100),
-    used_id VARCHAR(100) UNIQUE,
+    user_id VARCHAR(100) UNIQUE,
     password VARCHAR(100)
 );
 
