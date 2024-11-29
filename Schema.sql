@@ -63,6 +63,7 @@ CREATE TABLE Student (
     admin_id INT NOT NULL,
     FOREIGN KEY (admin_id) REFERENCES Administrator (UIN) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
 -- This table is actually unnecessary as this info is just a duplicate of the Takes relation
 -- CREATE TABLE Student_Courses (
 --     student_id INT,

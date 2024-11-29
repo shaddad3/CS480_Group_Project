@@ -19,6 +19,7 @@ router.get("/all", async (req, res) => {
     const [teachesTable] = await database.execute("SELECT * FROM Teaches");
     const [studentTable] = await database.execute("SELECT * FROM Student");
     const [takesTable] = await database.execute("SELECT * FROM Takes");
+
     res.json({
       administratorTable,
       departmentTable,
