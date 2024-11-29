@@ -1,183 +1,1577 @@
-INSERT INTO Administrator VALUES 
-    (111, 'Sammy', 'sammy@uic.edu', 'sammy', 'abc'),
-    (222, 'Hrushikesh', 'hrushi@uic.edu', 'hrushi', 'def'),
-    (333, 'Pradnya', 'pradnya@uic.edu', 'pradnya', 'ghi'),
-    (444, 'Ayush', 'ayush@uic.edu', 'ayush', 'jkl');
+INSERT INTO
+    Administrator (
+        administrator_username,
+        administrator_password,
+        administrator_first_name,
+        administrator_last_name,
+        administrator_email
+    )
+VALUES (
+        'SamuelHaddad',
+        'abc',
+        'Samuel',
+        'Haddad',
+        'sammuelH@uic.edu'
+    ),
+    (
+        'HrushikeshJoshi',
+        'def',
+        'Hrushikesh',
+        'Joshi',
+        'hrushikeshJ@uic.edu'
+    ),
+    (
+        'PradnyaSonawane',
+        'ghi',
+        'Pradnya',
+        'Sonawane',
+        'pradnyaS@uic.edu'
+    ),
+    (
+        'AyushShah',
+        'jkl',
+        'Ayush',
+        'Shah',
+        'ayushS@uic.edu'
+    );
 
-INSERT INTO Department VALUES 
-    (1, 'CS', 'Dr. Robert Sloan'),
-    (2, 'MATH', 'Dr. Julius Ross'),
-    (3, 'BIOLOGY', 'Dr. Mathew Perry'),
-    (4, 'PSYCHOLOGY', 'Dr. Anne Frank'),
-    (5, 'HISTORY', 'Dr. William Shakespear');
+INSERT INTO
+    Department (
+        department_name,
+        department_head_first_name,
+        department_head_last_name
+    )
+VALUES (
+        'Computer Science',
+        'Robert',
+        'Sloan'
+    ),
+    (
+        'Mathematics',
+        'Julius',
+        'Ross'
+    ),
+    (
+        'Biology',
+        'Steven',
+        'Jacobsen'
+    ),
+    ('Physics', 'Robert', 'Klie'),
+    ('Chemistry', 'Wonhwa', 'Cho');
 
-INSERT INTO Instructor VALUES 
-    (101, 'Dr. Sidharth Kumar', 'sidharth@uic.edu', 'CS', 'CS480', 111),
-    (102, 'Dr. Adam Koehler', 'adam@uic.edu', 'CS', 'CS251', 111),
-    (103, 'Dr. Ellen Kidane', 'ellen@uic.edu', 'CS', 'CS141', 111),
-    (104, 'Dr. David Hayes', 'david@uic.edu', 'CS', 'CS111', 111),
-    (105, 'Dr. Olivia Wilson', 'email105@uic.edu', 'MATH', 222),
-    (106, 'Dr. Olivia Davis', 'email106@uic.edu', 'MATH', 222),
-    (107, 'Dr. Isabella Garcia', 'email107@uic.edu', 'MATH', 222),
-    (108, 'Dr. Robert Haddad', 'email108@uic.edu', 'BIOLOGY', 333),
-    (109, 'Dr. John Garcia', 'email109@uic.edu', 'BIOLOGY', 333),
-    (110, 'Dr. John Lopez', 'email110@uic.edu', 'BIOLOGY', 333),
-    (111, 'Dr. John Jones', 'email111@uic.edu', 'PSYCHOLOGY', 444),
-    (112, 'Dr. Sophia Davis', 'email112@uic.edu', 'PSYCHOLOGY', 444),
-    (113, 'Dr. David Lopez', 'email113@uic.edu', 'PSYCHOLOGY', 444),
-    (114, 'Dr. Alice Garcia', 'email114@uic.edu', 'PSYCHOLOGY', 444),
-    (115, 'Dr. Robert Wilson', 'email115@uic.edu', 'HISTORY', 444),
-    (116, 'Dr. Isabella Lopez', 'email116@uic.edu', 'HISTORY', 444),
-    (117, 'Dr. John Davis', 'email117@uic.edu', 'HISTORY', 444),
-    (118, 'Dr. Sammy Martinez', 'email118@uic.edu', 'HISTORY', 444);
+INSERT INTO
+    Instructor (
+        instructor_username,
+        instructor_password,
+        instructor_first_name,
+        instructor_last_name,
+        instructor_email,
+        administrator_id,
+        department_id
+    )
+VALUES (
+        'johnsmith',
+        'aBc',
+        'John',
+        'Smith',
+        'john.smith@uic.edu',
+        1,
+        1
+    ),
+    (
+        'janedoe',
+        'dEf',
+        'Jane',
+        'Doe',
+        'jane.doe@uic.edu',
+        2,
+        1
+    ),
+    (
+        'michaelbrown',
+        'gHi',
+        'Michael',
+        'Brown',
+        'michael.brown@uic.edu',
+        3,
+        2
+    ),
+    (
+        'susanwilson',
+        'jKl',
+        'Susan',
+        'Wilson',
+        'susan.wilson@uic.edu',
+        4,
+        2
+    ),
+    (
+        'robertmiller',
+        'lMn',
+        'Robert',
+        'Miller',
+        'robert.miller@uic.edu',
+        1,
+        3
+    ),
+    (
+        'emilydavis',
+        'oPq',
+        'Emily',
+        'Davis',
+        'emily.davis@uic.edu',
+        2,
+        3
+    ),
+    (
+        'jamesjohnson',
+        'rSt',
+        'James',
+        'Johnson',
+        'james.johnson@uic.edu',
+        3,
+        4
+    ),
+    (
+        'lindawilson',
+        'uVw',
+        'Linda',
+        'Wilson',
+        'linda.wilson@uic.edu',
+        4,
+        4
+    ),
+    (
+        'charlesclark',
+        'xYz',
+        'Charles',
+        'Clark',
+        'charles.clark@uic.edu',
+        1,
+        5
+    ),
+    (
+        'margaretlopez',
+        'aBc',
+        'Margaret',
+        'Lopez',
+        'margaret.lopez@uic.edu',
+        2,
+        5
+    ),
+    (
+        'danielmoore',
+        'dEf',
+        'Daniel',
+        'Moore',
+        'daniel.moore@uic.edu',
+        3,
+        1
+    ),
+    (
+        'rebeccajackson',
+        'gHi',
+        'Rebecca',
+        'Jackson',
+        'rebecca.jackson@uic.edu',
+        4,
+        1
+    ),
+    (
+        'brianwhite',
+        'jKl',
+        'Brian',
+        'White',
+        'brian.white@uic.edu',
+        1,
+        2
+    ),
+    (
+        'helenharris',
+        'lMn',
+        'Helen',
+        'Harris',
+        'helen.harris@uic.edu',
+        2,
+        2
+    ),
+    (
+        'williammartin',
+        'oPq',
+        'William',
+        'Martin',
+        'william.martin@uic.edu',
+        3,
+        3
+    ),
+    (
+        'karenthompson',
+        'rSt',
+        'Karen',
+        'Thompson',
+        'karen.thompson@uic.edu',
+        4,
+        3
+    ),
+    (
+        'brianscott',
+        'uVw',
+        'Brian',
+        'Scott',
+        'brian.scott@uic.edu',
+        1,
+        4
+    ),
+    (
+        'patriciagreen',
+        'xYz',
+        'Patricia',
+        'Green',
+        'patricia.green@uic.edu',
+        2,
+        4
+    ),
+    (
+        'nathanclark',
+        'aBc',
+        'Nathan',
+        'Clark',
+        'nathan.clark@uic.edu',
+        3,
+        5
+    ),
+    (
+        'susanmartin',
+        'dEf',
+        'Susan',
+        'Martin',
+        'susan.martin@uic.edu',
+        4,
+        5
+    );
 
-INSERT INTO Courses VALUES 
-    ('CS111', 'Program Design I', 3, 'CS', 'Dr. David Hayes', 'In-Person', 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
-    ('CS141', 'Program Design II', 3, 'CS', 'Dr. Ellen Kidane', 'Online', 111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'CS111'),
-    ('CS251', 'Data Structures & Algorithms', 3, 'CS', 'Dr. Adam Koehler', 'In-Person', 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'CS141'),
-    ('CS480', 'Database Systems', 3, 'CS', 'Dr. Sidharth Kumar', 'In-Person', 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'CS251'),
-    ('M111', 'Algebra', 3, 'MATH', 'Dr. Olivia Wilson', 'In-Person', 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
-    ('M141', 'Statistics', 3, 'MATH', 'Dr. Olivia Davis', 'In-Person', 111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'M111'),
-    ('M251', 'Trigonometry', 3, 'MATH', 'Dr. Isabella Garcia', 'In-Person', 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'M141'),
-    ('M480', 'Geometry', 3, 'MATH', 'Dr. Isabella Garcia', 'In-Person', 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'M251'),
-    ('BIO111', 'Human Anatomy', 3, 'BIOLOGY', 'Dr. John Garcia', 'In-Person', 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
-    ('BIO141', 'Plant Anatomy', 3, 'BIOLOGY', 'Dr. John Lopez', 'In-Person', 111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'BIO111'),
-    ('BIO251', 'Zoology', 3, 'BIOLOGY', 'Dr. Robert Haddad', 'In-Person', 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'BIO141'),
-    ('PSY480', 'Child Psychology', 3, 'PSYCHOLOGY', 'Dr. David Lopez', 'Online', 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251'),
-    ('PSY480', 'Mental Health Awareness', 3, 'PSYCHOLOGY', 'Dr. Alice Garcia', 'In-Person', 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251'),
-    ('HIS480', 'West History', 3, 'HISTORY', 'Dr. John Davis', 'Online', 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'HIS251'),
-    ('HIS480', 'East History', 3, 'HISTORY', 'Dr. Sammy Martinez', 'In-Person', 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'HIS251');
+INSERT INTO
+    Courses (
+        course_name,
+        course_credits,
+        course_instruction_method,
+        course_lecture_day,
+        course_lecture_time,
+        course_lecture_location,
+        course_available_seats,
+        prerequisite_course_id,
+        administrator_id,
+        department_id
+    )
+VALUES (
+        'Introduction to Programming',
+        3,
+        'Online',
+        'Monday',
+        '9:00 AM - 11:00 AM',
+        'Room 101',
+        30,
+        NULL,
+        1,
+        1
+    ),
+    (
+        'Data Structures and Algorithms',
+        4,
+        'In-person',
+        'Tuesday',
+        '10:00 AM - 12:00 PM',
+        'Room 202',
+        25,
+        1,
+        2,
+        1
+    ),
+    (
+        'Web Development Fundamentals',
+        3,
+        'Hybrid',
+        'Wednesday',
+        '1:00 PM - 3:00 PM',
+        'Room 103',
+        20,
+        1,
+        3,
+        1
+    ),
+    (
+        'Artificial Intelligence',
+        4,
+        'Online',
+        'Thursday',
+        '2:00 PM - 4:00 PM',
+        'Room 301',
+        15,
+        2,
+        4,
+        1
+    ),
+    (
+        'Discrete Mathematics',
+        3,
+        'In-person',
+        'Monday',
+        '8:00 AM - 10:00 AM',
+        'Room 104',
+        30,
+        NULL,
+        1,
+        2
+    ),
+    (
+        'Linear Algebra',
+        3,
+        'Hybrid',
+        'Tuesday',
+        '9:30 AM - 11:30 AM',
+        'Room 205',
+        40,
+        5,
+        2,
+        2
+    ),
+    (
+        'Calculus I',
+        4,
+        'In-person',
+        'Wednesday',
+        '10:00 AM - 12:00 PM',
+        'Room 106',
+        35,
+        NULL,
+        3,
+        2
+    ),
+    (
+        'Number Theory',
+        3,
+        'Online',
+        'Thursday',
+        '1:00 PM - 3:00 PM',
+        'Room 107',
+        25,
+        7,
+        4,
+        2
+    ),
+    (
+        'Cell Biology',
+        3,
+        'Hybrid',
+        'Monday',
+        '11:00 AM - 1:00 PM',
+        'Room 108',
+        50,
+        NULL,
+        1,
+        3
+    ),
+    (
+        'Genetics',
+        4,
+        'In-person',
+        'Tuesday',
+        '8:00 AM - 10:00 AM',
+        'Room 109',
+        40,
+        9,
+        2,
+        3
+    ),
+    (
+        'Ecology',
+        3,
+        'Online',
+        'Wednesday',
+        '2:00 PM - 4:00 PM',
+        'Room 110',
+        45,
+        9,
+        3,
+        3
+    ),
+    (
+        'Molecular Biology',
+        4,
+        'In-person',
+        'Thursday',
+        '10:00 AM - 12:00 PM',
+        'Room 111',
+        30,
+        10,
+        4,
+        3
+    ),
+    (
+        'Classical Mechanics',
+        4,
+        'Hybrid',
+        'Monday',
+        '9:00 AM - 11:00 AM',
+        'Room 201',
+        25,
+        NULL,
+        1,
+        4
+    ),
+    (
+        'Electromagnetism',
+        3,
+        'Online',
+        'Tuesday',
+        '1:00 PM - 3:00 PM',
+        'Room 202',
+        40,
+        13,
+        2,
+        4
+    ),
+    (
+        'Quantum Mechanics',
+        4,
+        'In-person',
+        'Wednesday',
+        '10:00 AM - 12:00 PM',
+        'Room 203',
+        35,
+        14,
+        3,
+        4
+    ),
+    (
+        'Thermodynamics',
+        3,
+        'Hybrid',
+        'Thursday',
+        '2:00 PM - 4:00 PM',
+        'Room 204',
+        50,
+        13,
+        4,
+        4
+    ),
+    (
+        'General Chemistry',
+        3,
+        'In-person',
+        'Monday',
+        '8:00 AM - 10:00 AM',
+        'Room 301',
+        30,
+        NULL,
+        1,
+        5
+    ),
+    (
+        'Organic Chemistry',
+        4,
+        'Online',
+        'Tuesday',
+        '10:00 AM - 12:00 PM',
+        'Room 302',
+        20,
+        17,
+        2,
+        5
+    ),
+    (
+        'Analytical Chemistry',
+        3,
+        'Hybrid',
+        'Wednesday',
+        '1:00 PM - 3:00 PM',
+        'Room 303',
+        25,
+        17,
+        3,
+        5
+    ),
+    (
+        'Biochemistry',
+        4,
+        'In-person',
+        'Thursday',
+        '2:00 PM - 4:00 PM',
+        'Room 304',
+        30,
+        18,
+        4,
+        5
+    );
 
-INSERT INTO Teaches VALUES 
-    (101, 'CS480'), 
-    (102, 'CS251'), 
-    (103, 'CS141'), 
-    (104, 'CS111'),
-    (105, 'M480'), 
-    (106, 'M251'), 
-    (107, 'M141'), 
-    (108, 'CS111'),
-    (109, 'BIO480'), 
-    (110, 'BIO251'), 
-    (111, 'PSY141'), 
-    (112, 'PSY111'),
-    (113, 'PSY480'), 
-    (114, 'PSY251'), 
-    (115, 'HIS141'), 
-    (116, 'HIS111'), 
-    (117, 'HIS141'), 
-    (118, 'HIS111');
+INSERT INTO
+    Student (
+        student_username,
+        student_password,
+        student_first_name,
+        student_last_name,
+        student_email,
+        student_level,
+        administrator_id
+    )
+VALUES (
+        'alicejones',
+        'abc',
+        'Alice',
+        'Jones',
+        'alice.jones@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'bobsmith',
+        'def',
+        'Bob',
+        'Smith',
+        'bob.smith@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'carolwilliams',
+        'ghi',
+        'Carol',
+        'Williams',
+        'carol.williams@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'davidjohnson',
+        'jkl',
+        'David',
+        'Johnson',
+        'david.johnson@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'emilybrown',
+        'mno',
+        'Emily',
+        'Brown',
+        'emily.brown@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'frankdavis',
+        'pqr',
+        'Frank',
+        'Davis',
+        'frank.davis@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'gracemiller',
+        'stu',
+        'Grace',
+        'Miller',
+        'grace.miller@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'hannahwilson',
+        'vwx',
+        'Hannah',
+        'Wilson',
+        'hannah.wilson@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'ianmoore',
+        'yzx',
+        'Ian',
+        'Moore',
+        'ian.moore@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'jacktaylor',
+        'abc',
+        'Jack',
+        'Taylor',
+        'jack.taylor@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'karenanderson',
+        'def',
+        'Karen',
+        'Anderson',
+        'karen.anderson@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'lucasjackson',
+        'ghi',
+        'Lucas',
+        'Jackson',
+        'lucas.jackson@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'miahernandez',
+        'jkl',
+        'Mia',
+        'Hernandez',
+        'mia.hernandez@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'noahmartinez',
+        'mno',
+        'Noah',
+        'Martinez',
+        'noah.martinez@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'oliviarodriguez',
+        'pqr',
+        'Olivia',
+        'Rodriguez',
+        'olivia.rodriguez@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'peterlee',
+        'stu',
+        'Peter',
+        'Lee',
+        'peter.lee@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'quinnallen',
+        'vwx',
+        'Quinn',
+        'Allen',
+        'quinn.allen@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'rachelyoung',
+        'yzx',
+        'Rachel',
+        'Young',
+        'rachel.young@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'samwilkins',
+        'abc',
+        'Sam',
+        'Wilkins',
+        'sam.wilkins@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'tessacarter',
+        'def',
+        'Tessa',
+        'Carter',
+        'tessa.carter@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'ursulajames',
+        'ghi',
+        'Ursula',
+        'James',
+        'ursula.james@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'victormartin',
+        'jkl',
+        'Victor',
+        'Martin',
+        'victor.martin@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'williambrown',
+        'mno',
+        'William',
+        'Brown',
+        'william.brown@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'xavierwilson',
+        'pqr',
+        'Xavier',
+        'Wilson',
+        'xavier.wilson@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'zoeperez',
+        'vwx',
+        'Zoe',
+        'Perez',
+        'zoe.perez@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'alexmartin',
+        'yzx',
+        'Alex',
+        'Martin',
+        'alex.martin@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'benjaminclark',
+        'abc',
+        'Benjamin',
+        'Clark',
+        'benjamin.clark@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'charlottegarcia',
+        'def',
+        'Charlotte',
+        'Garcia',
+        'charlotte.garcia@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'danielwilson',
+        'ghi',
+        'Daniel',
+        'Wilson',
+        'daniel.wilson@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'emilyjones',
+        'jkl',
+        'Emily',
+        'Jones',
+        'emily.jones@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'florenceperez',
+        'mno',
+        'Florence',
+        'Perez',
+        'florence.perez@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'gregorymartinez',
+        'pqr',
+        'Gregory',
+        'Martinez',
+        'gregory.martinez@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'hannahbaker',
+        'stu',
+        'Hannah',
+        'Baker',
+        'hannah.baker@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'isabellaevans',
+        'vwx',
+        'Isabella',
+        'Evans',
+        'isabella.evans@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'jacksonlong',
+        'yzx',
+        'Jackson',
+        'Long',
+        'jackson.long@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'karinawilliams',
+        'abc',
+        'Karina',
+        'Williams',
+        'karina.williams@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'leonardhart',
+        'def',
+        'Leonard',
+        'Hart',
+        'leonard.hart@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'madisonhill',
+        'ghi',
+        'Madison',
+        'Hill',
+        'madison.hill@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'nathankim',
+        'jkl',
+        'Nathan',
+        'Kim',
+        'nathan.kim@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'oliviamartin',
+        'mno',
+        'Olivia',
+        'Martin',
+        'olivia.martin@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'patricklewis',
+        'pqr',
+        'Patrick',
+        'Lewis',
+        'patrick.lewis@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'quinnwalker',
+        'stu',
+        'Quinn',
+        'Walker',
+        'quinn.walker@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'robertchavez',
+        'vwx',
+        'Robert',
+        'Chavez',
+        'robert.chavez@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'sophiaadams',
+        'yzx',
+        'Sophia',
+        'Adams',
+        'sophia.adams@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'travisrodriguez',
+        'abc',
+        'Travis',
+        'Rodriguez',
+        'travis.rodriguez@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'uriahthompson',
+        'def',
+        'Uriah',
+        'Thompson',
+        'uriah.thompson@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'veronicacameron',
+        'ghi',
+        'Veronica',
+        'Cameron',
+        'veronica.cameron@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'williamgreen',
+        'jkl',
+        'William',
+        'Green',
+        'william.green@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'xanderwilliams',
+        'mno',
+        'Xander',
+        'Williams',
+        'xander.williams@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'yasmineharris',
+        'pqr',
+        'Yasmine',
+        'Harris',
+        'yasmine.harris@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'zoechavez',
+        'stu',
+        'Zoe',
+        'Chavez',
+        'zoe.chavez@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'andrewsanchez',
+        'vwx',
+        'Andrew',
+        'Sanchez',
+        'andrew.sanchez@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'briancameron',
+        'yzx',
+        'Brian',
+        'Cameron',
+        'brian.cameron@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'carolinemoore',
+        'abc',
+        'Caroline',
+        'Moore',
+        'caroline.moore@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'davidperez',
+        'def',
+        'David',
+        'Perez',
+        'david.perez@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'eleanorwillis',
+        'ghi',
+        'Eleanor',
+        'Willis',
+        'eleanor.willis@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'felixdavis',
+        'jkl',
+        'Felix',
+        'Davis',
+        'felix.davis@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'gordonadams',
+        'mno',
+        'Gordon',
+        'Adams',
+        'gordon.adams@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'andrewthomas',
+        'abc',
+        'Andrew',
+        'Thomas',
+        'andrew.thomas@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'briannjohnson',
+        'def',
+        'Briann',
+        'Johnson',
+        'briann.johnson@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'carlosgarcia',
+        'ghi',
+        'Carlos',
+        'Garcia',
+        'carlos.garcia@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'danieljackson',
+        'jkl',
+        'Daniel',
+        'Jackson',
+        'daniel.jackson@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'ellaevans',
+        'mno',
+        'Ella',
+        'Evans',
+        'ella.evans@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'felixroberts',
+        'pqr',
+        'Felix',
+        'Roberts',
+        'felix.roberts@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'gabrielmorris',
+        'stu',
+        'Gabriel',
+        'Morris',
+        'gabriel.morris@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'hannahdavis',
+        'vwx',
+        'Hannah',
+        'Davis',
+        'hannah.davis@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'ignaciobaker',
+        'yzx',
+        'Ignacio',
+        'Baker',
+        'ignacio.baker@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'jenniferwilson',
+        'abc',
+        'Jennifer',
+        'Wilson',
+        'jennifer.wilson@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'karlwhite',
+        'def',
+        'Karl',
+        'White',
+        'karl.white@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'lindaharris',
+        'ghi',
+        'Linda',
+        'Harris',
+        'linda.harris@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'mariaallen',
+        'jkl',
+        'Maria',
+        'Allen',
+        'maria.allen@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'nicolaswilliams',
+        'mno',
+        'Nicolas',
+        'Williams',
+        'nicolas.williams@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'olivierbrown',
+        'pqr',
+        'Olivier',
+        'Brown',
+        'olivier.brown@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'pamelawilkins',
+        'stu',
+        'Pamela',
+        'Wilkins',
+        'pamela.wilkins@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'quinnrodriguez',
+        'yzx',
+        'Quinn',
+        'Rodriguez',
+        'quinn.rodriguez@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'raquelthompson',
+        'abc',
+        'Raquel',
+        'Thompson',
+        'raquel.thompson@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'sebastianlopez',
+        'def',
+        'Sebastian',
+        'Lopez',
+        'sebastian.lopez@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'tessasmith',
+        'ghi',
+        'Tessa',
+        'Smith',
+        'tessa.smith@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'ursulaallen',
+        'jkl',
+        'Ursula',
+        'Allen',
+        'ursula.allen@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'vincentsanchez',
+        'mno',
+        'Vincent',
+        'Sanchez',
+        'vincent.sanchez@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'williambennett',
+        'pqr',
+        'William',
+        'Bennett',
+        'william.bennett@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'xeniasmith',
+        'stu',
+        'Xenia',
+        'Smith',
+        'xenia.smith@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'yolandahunter',
+        'yzx',
+        'Yolanda',
+        'Hunter',
+        'yolanda.hunter@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'zacharymartinez',
+        'abc',
+        'Zachary',
+        'Martinez',
+        'zachary.martinez@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'aaronsmith',
+        'def',
+        'Aaron',
+        'Smith',
+        'aaron.smith@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'bethanyjones',
+        'ghi',
+        'Bethany',
+        'Jones',
+        'bethany.jones@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'caitlynchavez',
+        'jkl',
+        'Caitlyn',
+        'Chavez',
+        'caitlyn.chavez@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'daniellewalker',
+        'mno',
+        'Danielle',
+        'Walker',
+        'danielle.walker@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'ethanbrown',
+        'pqr',
+        'Ethan',
+        'Brown',
+        'ethan.brown@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'fionalewis',
+        'stu',
+        'Fiona',
+        'Lewis',
+        'fiona.lewis@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'gabriellawilson',
+        'yzx',
+        'Gabriella',
+        'Wilson',
+        'gabriella.wilson@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'hayleygreen',
+        'abc',
+        'Hayley',
+        'Green',
+        'hayley.green@uic.edu',
+        'undergraduate',
+        2
+    ),
+    (
+        'ivanperez',
+        'def',
+        'Ivan',
+        'Perez',
+        'ivan.perez@uic.edu',
+        'graduate',
+        3
+    ),
+    (
+        'jacquelinesmith',
+        'ghi',
+        'Jacqueline',
+        'Smith',
+        'jacqueline.smith@uic.edu',
+        'phd',
+        4
+    ),
+    (
+        'kendallhill',
+        'jkl',
+        'Kendall',
+        'Hill',
+        'kendall.hill@uic.edu',
+        'undergraduate',
+        1
+    ),
+    (
+        'lucylong',
+        'mno',
+        'Lucy',
+        'Long',
+        'lucy.long@uic.edu',
+        'graduate',
+        2
+    ),
+    (
+        'martinbrown',
+        'pqr',
+        'Martin',
+        'Brown',
+        'martin.brown@uic.edu',
+        'phd',
+        3
+    ),
+    (
+        'nataliecooper',
+        'stu',
+        'Natalie',
+        'Cooper',
+        'natalie.cooper@uic.edu',
+        'undergraduate',
+        4
+    ),
+    (
+        'oliversmith',
+        'yzx',
+        'Oliver',
+        'Smith',
+        'oliver.smith@uic.edu',
+        'graduate',
+        1
+    ),
+    (
+        'paigeadams',
+        'abc',
+        'Paige',
+        'Adams',
+        'paige.adams@uic.edu',
+        'phd',
+        2
+    ),
+    (
+        'quinnbrooks',
+        'def',
+        'Quinn',
+        'Brooks',
+        'quinn.brooks@uic.edu',
+        'undergraduate',
+        3
+    ),
+    (
+        'ryansmith',
+        'ghi',
+        'Ryan',
+        'Smith',
+        'ryan.smith@uic.edu',
+        'graduate',
+        4
+    ),
+    (
+        'sophiaroberts',
+        'jkl',
+        'Sophia',
+        'Roberts',
+        'sophia.roberts@uic.edu',
+        'phd',
+        1
+    ),
+    (
+        'trinitywhite',
+        'mno',
+        'Trinity',
+        'White',
+        'trinity.white@uic.edu',
+        'undergraduate',
+        2
+    );
 
-INSERT INTO Student VALUES 
-    (1, 'Olivia Haddad', 'email1@uic.edu', 'user_1', 'pass_574', 'Junior', 111),
-    (2, 'Emma Garcia', 'email2@uic.edu', 'user_2', 'pass_550', 'Senior', 333),
-    (3, 'Michael Martinez', 'email3@uic.edu', 'user_3', 'pass_51', 'Senior', 222),
-    (4, 'Sammy Martinez', 'email4@uic.edu', 'user_4', 'pass_933', 'Senior', 333),
-    (5, 'Alice Smith', 'email5@uic.edu', 'user_5', 'pass_566', 'Junior', 333),
-    (6, 'David Martinez', 'email6@uic.edu', 'user_6', 'pass_549', 'Senior', 444),
-    (7, 'Isabella Lopez', 'email7@uic.edu', 'user_7', 'pass_98', 'Junior', 333),
-    (8, 'David Wilson', 'email8@uic.edu', 'user_8', 'pass_557', 'Senior', 111),
-    (9, 'Alice Davis', 'email9@uic.edu', 'user_9', 'pass_58', 'Junior', 111),
-    (10, 'Robert Garcia', 'email10@uic.edu', 'user_10', 'pass_249', 'Junior', 111),
-    (11, 'Sammy Wilson', 'email11@uic.edu', 'user_11', 'pass_978', 'Junior', 111),
-    (12, 'Emma Johnson', 'email12@uic.edu', 'user_12', 'pass_988', 'Junior', 333),
-    (13, 'Isabella Jones', 'email13@uic.edu', 'user_13', 'pass_183', 'Junior', 111),
-    (14, 'Isabella Martinez', 'email14@uic.edu', 'user_14', 'pass_278', 'Senior', 333),
-    (15, 'Sophia Brown', 'email15@uic.edu', 'user_15', 'pass_368', 'Junior', 222),
-    (16, 'Michael Johnson', 'email16@uic.edu', 'user_16', 'pass_925', 'Junior', 444),
-    (17, 'Sammy Smith', 'email17@uic.edu', 'user_17', 'pass_536', 'Junior', 333),
-    (18, 'Olivia Haddad', 'email18@uic.edu', 'user_18', 'pass_496', 'Junior', 222),
-    (19, 'Robert Smith', 'email19@uic.edu', 'user_19', 'pass_48', 'Junior', 222),
-    (20, 'Michael Davis', 'email20@uic.edu', 'user_20', 'pass_798', 'Junior', 444),
-    (21, 'Sophia Martinez', 'email21@uic.edu', 'user_21', 'pass_206', 'Junior', 444),
-    (22, 'Emma Jones', 'email22@uic.edu', 'user_22', 'pass_182', 'Senior', 222),
-    (23, 'Robert Smith', 'email23@uic.edu', 'user_23', 'pass_772', 'Junior', 444),
-    (24, 'Sammy Davis', 'email24@uic.edu', 'user_24', 'pass_813', 'Senior', 111),
-    (25, 'Alice Haddad', 'email25@uic.edu', 'user_25', 'pass_880', 'Junior', 111),
-    (26, 'David Garcia', 'email26@uic.edu', 'user_26', 'pass_323', 'Senior', 333),
-    (27, 'Sammy Wilson', 'email27@uic.edu', 'user_27', 'pass_757', 'Junior', 111),
-    (28, 'John Haddad', 'email28@uic.edu', 'user_28', 'pass_272', 'Junior', 333),
-    (29, 'Alice Lopez', 'email29@uic.edu', 'user_29', 'pass_107', 'Junior', 111),
-    (30, 'Robert Martinez', 'email30@uic.edu', 'user_30', 'pass_634', 'Junior', 444),
-    (31, 'Robert Davis', 'email31@uic.edu', 'user_31', 'pass_207', 'Senior', 333),
-    (32, 'Sophia Davis', 'email32@uic.edu', 'user_32', 'pass_262', 'Junior', 222),
-    (33, 'Alice Jones', 'email33@uic.edu', 'user_33', 'pass_448', 'Senior', 111),
-    (34, 'Sammy Davis', 'email34@uic.edu', 'user_34', 'pass_755', 'Senior', 111),
-    (35, 'Sophia Martinez', 'email35@uic.edu', 'user_35', 'pass_610', 'Senior', 333),
-    (36, 'Alice Garcia', 'email36@uic.edu', 'user_36', 'pass_558', 'Senior', 222),
-    (37, 'David Brown', 'email37@uic.edu', 'user_37', 'pass_768', 'Senior', 222),
-    (38, 'Sophia Johnson', 'email38@uic.edu', 'user_38', 'pass_304', 'Junior', 444),
-    (39, 'Olivia Smith', 'email39@uic.edu', 'user_39', 'pass_867', 'Junior', 222),
-    (40, 'Sophia Garcia', 'email40@uic.edu', 'user_40', 'pass_456', 'Senior', 333),
-    (41, 'Emma Davis', 'email41@uic.edu', 'user_41', 'pass_843', 'Senior', 222),
-    (42, 'Robert Lopez', 'email42@uic.edu', 'user_42', 'pass_360', 'Senior', 222),
-    (43, 'Olivia Davis', 'email43@uic.edu', 'user_43', 'pass_668', 'Junior', 333),
-    (44, 'Sophia Garcia', 'email44@uic.edu', 'user_44', 'pass_705', 'Senior', 333),
-    (45, 'Olivia Haddad', 'email45@uic.edu', 'user_45', 'pass_702', 'Junior', 444),
-    (46, 'Alice Haddad', 'email46@uic.edu', 'user_46', 'pass_427', 'Senior', 333),
-    (47, 'Sammy Smith', 'email47@uic.edu', 'user_47', 'pass_891', 'Senior', 444),
-    (48, 'Alice Lopez', 'email48@uic.edu', 'user_48', 'pass_843', 'Junior', 111),
-    (49, 'Michael Garcia', 'email49@uic.edu', 'user_49', 'pass_334', 'Junior', 444),
-    (50, 'Sammy Wilson', 'email50@uic.edu', 'user_50', 'pass_747', 'Junior', 222),
-    (51, 'Michael Smith', 'email51@uic.edu', 'user_51', 'pass_55', 'Junior', 111),
-    (52, 'Isabella Lopez', 'email52@uic.edu', 'user_52', 'pass_313', 'Senior', 111),
-    (53, 'John Johnson', 'email53@uic.edu', 'user_53', 'pass_317', 'Senior', 222),
-    (54, 'Olivia Martinez', 'email54@uic.edu', 'user_54', 'pass_581', 'Junior', 111),
-    (55, 'Alice Haddad', 'email55@uic.edu', 'user_55', 'pass_558', 'Senior', 333),
-    (56, 'David Davis', 'email56@uic.edu', 'user_56', 'pass_536', 'Junior', 222),
-    (57, 'John Davis', 'email57@uic.edu', 'user_57', 'pass_429', 'Senior', 222),
-    (58, 'Michael Lopez', 'email58@uic.edu', 'user_58', 'pass_756', 'Junior', 111),
-    (59, 'Sophia Jones', 'email59@uic.edu', 'user_59', 'pass_902', 'Senior', 444),
-    (60, 'Sammy Lopez', 'email60@uic.edu', 'user_60', 'pass_951', 'Senior', 111),
-    (61, 'Isabella Martinez', 'email61@uic.edu', 'user_61', 'pass_304', 'Senior', 333),
-    (62, 'Isabella Lopez', 'email62@uic.edu', 'user_62', 'pass_196', 'Junior', 111),
-    (63, 'Olivia Brown', 'email63@uic.edu', 'user_63', 'pass_170', 'Senior', 444),
-    (64, 'Michael Garcia', 'email64@uic.edu', 'user_64', 'pass_249', 'Junior', 444),
-    (65, 'Olivia Jones', 'email65@uic.edu', 'user_65', 'pass_68', 'Junior', 111),
-    (66, 'Sammy Davis', 'email66@uic.edu', 'user_66', 'pass_60', 'Senior', 333),
-    (67, 'Alice Martinez', 'email67@uic.edu', 'user_67', 'pass_763', 'Senior', 444),
-    (68, 'Sophia Jones', 'email68@uic.edu', 'user_68', 'pass_665', 'Junior', 111),
-    (69, 'Robert Martinez', 'email69@uic.edu', 'user_69', 'pass_125', 'Junior', 444),
-    (70, 'Sammy Jones', 'email70@uic.edu', 'user_70', 'pass_731', 'Junior', 222),
-    (71, 'Emma Garcia', 'email71@uic.edu', 'user_71', 'pass_727', 'Senior', 111),
-    (72, 'Sammy Jones', 'email72@uic.edu', 'user_72', 'pass_392', 'Senior', 111),
-    (73, 'Olivia Lopez', 'email73@uic.edu', 'user_73', 'pass_689', 'Senior', 333),
-    (74, 'Sammy Brown', 'email74@uic.edu', 'user_74', 'pass_468', 'Senior', 333),
-    (75, 'Isabella Haddad', 'email75@uic.edu', 'user_75', 'pass_768', 'Senior', 444),
-    (76, 'Michael Wilson', 'email76@uic.edu', 'user_76', 'pass_490', 'Junior', 333),
-    (77, 'Sammy Davis', 'email77@uic.edu', 'user_77', 'pass_846', 'Senior', 333),
-    (78, 'Emma Smith', 'email78@uic.edu', 'user_78', 'pass_909', 'Junior', 111),
-    (79, 'Alice Martinez', 'email79@uic.edu', 'user_79', 'pass_556', 'Junior', 333),
-    (80, 'Sophia Garcia', 'email80@uic.edu', 'user_80', 'pass_548', 'Senior', 111),
-    (81, 'Sophia Brown', 'email81@uic.edu', 'user_81', 'pass_169', 'Junior', 222),
-    (82, 'Robert Haddad', 'email82@uic.edu', 'user_82', 'pass_882', 'Junior', 111),
-    (83, 'Alice Brown', 'email83@uic.edu', 'user_83', 'pass_146', 'Senior', 444),
-    (84, 'Alice Brown', 'email84@uic.edu', 'user_84', 'pass_675', 'Junior', 333),
-    (85, 'David Davis', 'email85@uic.edu', 'user_85', 'pass_740', 'Junior', 333),
-    (86, 'Sammy Smith', 'email86@uic.edu', 'user_86', 'pass_301', 'Junior', 222),
-    (87, 'Sophia Davis', 'email87@uic.edu', 'user_87', 'pass_695', 'Junior', 111),
-    (88, 'Emma Haddad', 'email88@uic.edu', 'user_88', 'pass_185', 'Senior', 444),
-    (89, 'John Lopez', 'email89@uic.edu', 'user_89', 'pass_536', 'Senior', 444),
-    (90, 'Michael Johnson', 'email90@uic.edu', 'user_90', 'pass_458', 'Junior', 111),
-    (91, 'David Lopez', 'email91@uic.edu', 'user_91', 'pass_508', 'Senior', 333),
-    (92, 'John Garcia', 'email92@uic.edu', 'user_92', 'pass_710', 'Junior', 333),
-    (93, 'Isabella Johnson', 'email93@uic.edu', 'user_93', 'pass_15', 'Junior', 444),
-    (94, 'David Wilson', 'email94@uic.edu', 'user_94', 'pass_730', 'Junior', 444),
-    (95, 'Sophia Garcia', 'email95@uic.edu', 'user_95', 'pass_86', 'Senior', 333),
-    (96, 'Michael Smith', 'email96@uic.edu', 'user_96', 'pass_955', 'Junior', 333),
-    (97, 'Emma Davis', 'email97@uic.edu', 'user_97', 'pass_459', 'Junior', 333),
-    (98, 'Isabella Martinez', 'email98@uic.edu', 'user_98', 'pass_453', 'Senior', 444),
-    (99, 'Emma Johnson', 'email99@uic.edu', 'user_99', 'pass_898', 'Junior', 222),
-    (100, 'Michael Davis', 'email100@uic.edu', 'user_100', 'pass_947', 'Senior', 444);
+INSERT INTO
+    Teaches (instructor_id, course_id)
+VALUES (1, 1),
+    (2, 2),
+    (11, 3),
+    (12, 4),
+    (3, 5),
+    (4, 6),
+    (13, 7),
+    (14, 8),
+    (5, 9),
+    (6, 10),
+    (15, 11),
+    (16, 12),
+    (7, 13),
+    (8, 14),
+    (17, 15),
+    (18, 16),
+    (9, 17),
+    (10, 18),
+    (19, 19),
+    (19, 20);
 
-INSERT INTO Takes VALUES 
-    (1, 'CS480', 1000),
-    (2, 'CS251', 1001),
-    (3, 'CS141', 1002),
-    (4, 'CS111', 1003),
-    (5, 'M480', 1004),
-    (6, 'M251', 1005),
-    (7, 'M141', 1006),
-    (8, 'BIO480', 1007),
-    (9, 'BIO251', 1008),
-    (10, 'PSY141', 1009);
+INSERT INTO
+    Takes (course_id, student_id)
+VALUES (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5),
+    (6, 6),
+    (7, 7),
+    (8, 8),
+    (9, 9),
+    (10, 10),
+    (11, 11),
+    (12, 12),
+    (13, 13),
+    (14, 14),
+    (15, 15),
+    (16, 16),
+    (17, 17),
+    (18, 18),
+    (19, 19),
+    (20, 20),
+    (1, 21),
+    (2, 22),
+    (3, 23),
+    (4, 24),
+    (5, 25),
+    (6, 26),
+    (7, 27),
+    (8, 28),
+    (9, 29),
+    (10, 30),
+    (11, 31),
+    (12, 32),
+    (13, 33),
+    (14, 34),
+    (15, 35),
+    (16, 36),
+    (17, 37),
+    (18, 38),
+    (19, 39),
+    (20, 40),
+    (1, 41),
+    (2, 42),
+    (3, 43),
+    (4, 44),
+    (5, 45),
+    (6, 46),
+    (7, 47),
+    (8, 48),
+    (9, 49),
+    (10, 50),
+    (11, 51),
+    (12, 52),
+    (13, 53),
+    (14, 54),
+    (15, 55),
+    (16, 56),
+    (17, 57),
+    (18, 58),
+    (19, 59),
+    (20, 60),
+    (1, 61),
+    (2, 62),
+    (3, 63),
+    (4, 64),
+    (5, 65),
+    (6, 66),
+    (7, 67),
+    (8, 68),
+    (9, 69),
+    (10, 70),
+    (11, 71),
+    (12, 72),
+    (13, 73),
+    (14, 74),
+    (15, 75),
+    (16, 76),
+    (17, 77),
+    (18, 78),
+    (19, 79),
+    (20, 80),
+    (1, 81),
+    (2, 82),
+    (3, 83),
+    (4, 84),
+    (5, 85),
+    (6, 86),
+    (7, 87),
+    (8, 88),
+    (9, 89),
+    (10, 90),
+    (11, 91),
+    (12, 92),
+    (13, 93),
+    (14, 94),
+    (15, 95),
+    (16, 96),
+    (17, 97),
+    (18, 98),
+    (19, 99);
