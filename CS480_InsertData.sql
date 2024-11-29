@@ -4,7 +4,7 @@ INSERT INTO Administrator VALUES (111, 'Sammy', 'sammy@uic.edu', 'sammy', 'abc')
 (444, 'Ayush', 'ayush@uic.edu', 'ayush', 'jkl');
 INSERT INTO Department VALUES (1, 'CS', 'Dr. Robert Sloan'),
 (2, 'MATH', 'Dr. Julius Ross'),
-(3, 'BIOLOGY, Dr. Mathew Perry')
+(3, 'BIOLOGY, Dr. Mathew Perry'),
 (4, 'PSYCHOLOGY', 'Dr. Anne Frank'),
 (5, 'HISTORY', 'Dr. William Shakespear');
 INSERT INTO Instructor VALUES (101, 'Dr. Sidharth Kumar', 'sidharth@uic.edu', 'CS', 'CS480', 111),
@@ -38,37 +38,37 @@ INSERT INTO Courses VALUES ('CS111', 'Program Desgin I', 3, 'CS', 'Dr. David Hay
 ('CS480', 'Database Systems', 3, 'CS', 'Dr. Sidharth Kumar', 'In-Person', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'CS251'),
 
-('M111', 'Algebra', 3, 'MATH', 'Dr. David Hayes', 'In-Person', 
+('M111', 'Algebra', 3, 'MATH', 'Dr. Olivia Wilson', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
 
-('M141', 'Statistics', 3, 'MATH', 'Dr. Ellen Kidane', 'In-Person', 
+('M141', 'Statistics', 3, 'MATH', 'Dr. Olivia Davis', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'M111'),
 
-('M251', 'Trigonometery', 3, 'MATH', 'Dr. Adam Koehler', 'In-Person', 
+('M251', 'Trigonometery', 3, 'MATH', 'Dr. Isabella Garcia', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'M141'),
 
-('M480', 'Geometery', 3, 'MATH', 'Dr. Sidharth Kumar', 'In-Person', 
+('M480', 'Geometery', 3, 'MATH', 'Dr. Isabella Garcia', 'In-Person', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'M251'),
 
-('BIO111', 'Human Anatomy', 3, 'BIOLOGY', 'Dr. David Hayes', 'In-Person', 
+('BIO111', 'Human Anatomy', 3, 'BIOLOGY', 'Dr. John Garcia', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '3:00-3:50pm', 'LC 004', 30, NULL),
 
-('BIO141', 'Plant Anatomy', 3, 'BIOLOGY', 'Dr. Ellen Kidane', 'In-Person', 
+('BIO141', 'Plant Anatomy', 3, 'BIOLOGY', 'Dr. John Lopez', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '1:00-1:50pm', 'SES 132', 30, 'BIO111'),
 
-('BIO251', 'Zoology', 3, 'BIOLOGY', 'Dr. Adam Koehler', 'In-Person', 
+('BIO251', 'Zoology', 3, 'BIOLOGY', 'Dr. Robert Haddad', 'In-Person', 
 111, 'Monday, Wednesday & Friday', '12:00-12:50pm', 'SES 130', 30, 'BIO141'),
 
-('PSY480', 'Child Psychology', 3, 'PSYCHOLOGY', 'Dr. Sidharth Kumar', 'Online', 
+('PSY480', 'Child Psychology', 3, 'PSYCHOLOGY', 'Dr. David Lopez', 'Online', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251'),
 
-('PSY480', 'Mental Health Awareness', 3, 'PSYCHOLOGY', 'Dr. Sidharth Kumar', 'In-Person', 
+('PSY480', 'Mental Health Awareness', 3, 'PSYCHOLOGY', 'Dr. Alice Garcia', 'In-Person', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'PSY251')
 
-('HIS480', 'West History', 3, 'HISTORY', 'Dr. Sidharth Kumar', 'Online', 
+('HIS480', 'West History', 3, 'HISTORY', 'Dr. John Davis', 'Online', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'HIS251')
 
-('HIS480', 'East History', 3, 'HISTORY', 'Dr. Sidharth Kumar', 'In-Person', 
+('HIS480', 'East History', 3, 'HISTORY', 'Dr. Sammy Martine', 'In-Person', 
 111, 'Tuesday & Thursday', '5:00-6:15pm', 'LC 006', 30, 'HIS251');
 
 
