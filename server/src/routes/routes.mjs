@@ -278,4 +278,79 @@ router.get("/courses-by-department/:departmentId", async (req, res) => {
   }
 });
 
+
+
+// Fetching all students in a department
+
+router.get("/students-by-department/:departmentId", async (req, res) => {
+  try {
+    const database = await connection;
+    const { departmentId } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT 
+        Student.UIN AS student_uin,
+        Student.name AS student_name,
+        Student.email AS student_email,
+        Department.dept_id AS department_id,
+        Department.dept_name AS department_name
+      FROM 
+        Student
+      JOIN 
+        Courses ON Courses.admin_id = Student.admin_id
+      JOIN 
+        Department ON Courses.dept_name = Department.dept_name
+      WHERE 
+        Department.dept_id = ?`,
+      [departmentId]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No students found for the specified department");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching students by department:", error);
+    res.status(500).send("Error fetching students by department");
+  }
+});
+
+
+// fetching all instructors in a department
+
+router.get("/students-by-department/:departmentId", async (req, res) => {
+  try {
+    const database = await connection;
+    const { departmentId } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT 
+        Student.UIN AS student_uin,
+        Student.name AS student_name,
+        Student.email AS student_email,
+        Department.dept_id AS department_id,
+        Department.dept_name AS department_name
+      FROM 
+        Student
+      JOIN 
+        Courses ON Courses.admin_id = Student.admin_id
+      JOIN 
+        Department ON Courses.dept_name = Department.dept_name
+      WHERE 
+        Department.dept_id = ?`,
+      [departmentId]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No students found for the specified department");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching students by department:", error);
+    res.status(500).send("Error fetching students by department");
+  }
+});
+
 export default router;
