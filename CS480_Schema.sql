@@ -1,3 +1,7 @@
+CREATE DATABASE IF NOT EXISTS course_registration_website;
+
+USE course_registration_website;
+
 CREATE TABLE Administrator (
     UIN INT PRIMARY KEY,
     name VARCHAR(100),
