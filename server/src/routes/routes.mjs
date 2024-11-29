@@ -143,4 +143,139 @@ router.get("/department/:id", async (req, res) => {
   }
 });
 
+/// Fetching all students who have taken a specific course
+router.get("/students-by-course/:courseId", async (req, res) => {
+  try {
+    const database = await connection;
+    const { courseId } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT 
+        Student.UIN AS student_uin,
+        Student.name AS student_name,
+        Student.email AS student_email,
+        Courses.course_id AS course_id,
+        Courses.course_name AS course_name
+      FROM 
+        Student
+      JOIN 
+        Takes ON Student.UIN = Takes.student_id
+      JOIN 
+        Courses ON Takes.course_id = Courses.course_id
+      WHERE 
+        Courses.course_id = ?`,
+      [courseId]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No students found for the specified course");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching students by course:", error);
+    res.status(500).send("Error fetching students by course");
+  }
+});
+
+// Fetching all courses taken by a specific student
+router.get("/courses-by-student/:studentId", async (req, res) => {
+  try {
+    const database = await connection;
+    const { studentId } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT 
+        Courses.course_id AS course_id,
+        Courses.course_name AS course_name,
+        Student.UIN AS student_uin,
+        Student.name AS student_name
+      FROM 
+        Courses
+      JOIN 
+        Takes ON Courses.course_id = Takes.course_id
+      JOIN 
+        Student ON Takes.student_id = Student.UIN
+      WHERE 
+        Student.UIN = ?`,
+      [studentId]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No courses found for the specified student");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching courses by student ID:", error);
+    res.status(500).send("Error fetching courses by student ID");
+  }
+});
+
+// Fetching all courses taught by a specific instructor
+router.get("/courses-by-instructor/:instructorId", async (req, res) => {
+  try {
+    const database = await connection;
+    const { instructorId } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT 
+        Courses.course_id AS course_id,
+        Courses.course_name AS course_name,
+        Instructor.UIN AS instructor_uin,
+        Instructor.name AS instructor_name
+      FROM 
+        Courses
+      JOIN 
+        Teaches ON Courses.course_id = Teaches.course_id
+      JOIN 
+        Instructor ON Teaches.inst_id = Instructor.UIN
+      WHERE 
+        Instructor.UIN = ?`,
+      [instructorId]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No courses found for the specified instructor");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching courses by instructor ID:", error);
+    res.status(500).send("Error fetching courses by instructor ID");
+  }
+});
+
+// Fetching all courses offered by a specific department
+router.get("/courses-by-department/:departmentId", async (req, res) => {
+  try {
+    const database = await connection;
+    const { departmentId } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT 
+        Courses.course_id AS course_id,
+        Courses.course_name AS course_name,
+        Department.dept_id AS department_id,
+        Department.dept_name AS department_name
+      FROM 
+        Courses
+      JOIN 
+        Department ON Courses.dept_name = Department.dept_name
+      WHERE 
+        Department.dept_id = ?`,
+      [departmentId]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No courses found for the specified department");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching courses by department ID:", error);
+    res.status(500).send("Error fetching courses by department ID");
+  }
+});
+
 export default router;
