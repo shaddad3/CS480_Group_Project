@@ -1,53 +1,27 @@
-import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { fetchAllTables } from "./api/api";
+import Dashboard from "./components/Dashboard";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      setData(await fetchAllTables());
-    })();
-  }, []);
-
-  function generateTables() {
-    const tables = [];
-
-    for (let tablename in data) {
-      tables.push(
-        <table key={tablename}>
-          <thead>
-            <tr>
-              <th colSpan={Object.keys(data[tablename][0]).length}>
-                {tablename}
-              </th>
-            </tr>
-            <tr>
-              {Object.keys(data[tablename][0]).map((key) => (
-                <th key={key}>{key}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data[tablename].map((table, index) => (
-              <tr key={index}>
-                {Object.keys(table).map((key) => (
-                  <td key={key}>{table[key]}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      );
-    }
-
-    return tables;
-  }
-
-  return <div className="app">{generateTables()}</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        {/* 
+        <Route path="/" element={<Navigate to="/venues" />} />
+        <Route path="/venues" element={<VenueList />} />
+        <Route path="/venue/:id" element={<VenueDetails />} />
+        <Route path="/bookings" element={<MyBookings />} />
+        <Route path="*" element={<Navigate to="/" />} /> */}
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;

@@ -1,5 +1,4 @@
 import express from "express";
-import mysql from "mysql2";
 import cors from "cors";
 
 import router from "./routes/routes.mjs";
