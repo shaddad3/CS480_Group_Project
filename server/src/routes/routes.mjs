@@ -353,4 +353,31 @@ router.get("/students-by-department/:departmentId", async (req, res) => {
   }
 });
 
+
+// fetching all courses wit their prerequisites
+
+router.get("/prereqs-by-course/:courseId", async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const [results] = await connection.execute(
+      `SELECT 
+        Prereq.course_id AS prereq_course_id,
+        Prereq.course_name AS prereq_course_name,
+        Main.course_id AS course_id,
+        Main.course_name AS course_name
+      FROM 
+        Courses AS Main
+      JOIN 
+        Courses AS Prereq ON Main.prereq_id = Prereq.course_id
+      WHERE 
+        Main.course_id = ?`,
+      [courseId]
+    );
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching prerequisites by course:", error);
+    res.status(500).send("Error fetching prerequisites by course");
+  }
+});
+
 export default router;
