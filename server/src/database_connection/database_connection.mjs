@@ -10,5 +10,3 @@ const databaseConfiguration = {
 const database_connection = mysql.createConnection(databaseConfiguration);
 
 export default database_connection;
-
-/* making sure this file gets updated */
