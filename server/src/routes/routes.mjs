@@ -52,7 +52,7 @@ router.get("/student/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [studentTable] = await database.execute("SELECT * FROM Student WHERE id = ?", [id]);
+    const [studentTable] = await database.execute("SELECT * FROM Student WHERE student_id = ?", [id]);
     if (studentTable.length === 0) {
       return res.status(404).send("Student not found");
     }
@@ -80,7 +80,7 @@ router.get("/instructor/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [instructorTable] = await database.execute("SELECT * FROM Instructor WHERE id = ?", [id]);
+    const [instructorTable] = await database.execute("SELECT * FROM Instructor WHERE instructor_id = ?", [id]);
     if (instructorTable.length === 0) {
       return res.status(404).send("Instructor not found");
     }
@@ -92,10 +92,10 @@ router.get("/instructor/:id", async (req, res) => {
 });
 
 // Fetch all Courses
-router.get("/course", async (req, res) => {
+router.get("/courses", async (req, res) => {
   try {
     const database = await connection;
-    const [courseTable] = await database.execute("SELECT * FROM Course");
+    const [courseTable] = await database.execute("SELECT * FROM Courses");
     res.json(courseTable);
   } catch (error) {
     console.error("Error fetching courses:", error);
@@ -104,11 +104,11 @@ router.get("/course", async (req, res) => {
 });
 
 // Fetch a Course by ID
-router.get("/course/:id", async (req, res) => {
+router.get("/courses/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [courseTable] = await database.execute("SELECT * FROM Course WHERE id = ?", [id]);
+    const [courseTable] = await database.execute("SELECT * FROM Courses WHERE course_id = ?", [id]);
     if (courseTable.length === 0) {
       return res.status(404).send("Course not found");
     }
@@ -164,7 +164,7 @@ router.get("/department/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [departmentTable] = await database.execute("SELECT * FROM Department WHERE id = ?", [id]);
+    const [departmentTable] = await database.execute("SELECT * FROM Department WHERE department_id = ?", [id]);
     if (departmentTable.length === 0) {
       return res.status(404).send("Department not found");
     }
