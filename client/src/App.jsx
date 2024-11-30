@@ -1,26 +1,32 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
-import Dashboard from "./components/Dashboard";
+import Navbar from "./components/Navbar";
 import Login from "./components/Login";
-import Register from "./components/Register";
+import AuthenticatedRoutes from "./components/AuthenticatedRoutes";
+import Dashboard from "./components/Dashboard";
 
 import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        {/* 
-        <Route path="/" element={<Navigate to="/venues" />} />
-        <Route path="/venues" element={<VenueList />} />
-        <Route path="/venue/:id" element={<VenueDetails />} />
-        <Route path="/bookings" element={<MyBookings />} />
-        <Route path="*" element={<Navigate to="/" />} /> */}
-      </Routes>
-    </BrowserRouter>
+    <div className="app">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <AuthenticatedRoutes>
+                <Dashboard />
+              </AuthenticatedRoutes>
+            }
+          />
+          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/" element={<Navigate to="/login" />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

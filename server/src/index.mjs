@@ -4,13 +4,6 @@ import cors from "cors";
 import router from "./routes/routes.mjs";
 import database_connection from "./database_connection/database_connection.mjs";
 
-const databaseConfiguration = {
-  host: "localhost",
-  user: "root",
-  password: "CS480",
-  database: "course_registration_website",
-};
-
 const corsOptions = {
   origin: "http://localhost:5173",
   methods: ["GET", "POST"],

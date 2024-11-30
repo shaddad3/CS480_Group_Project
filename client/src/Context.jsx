@@ -1,19 +1,27 @@
-import { createContext, useEffect, useState } from "react";
-
-import { fetchAllTables } from "./api/api";
+import { createContext, useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 export const Context = createContext(null);
+import { User } from "./api/api";
 
 export function ContextProvider({ children }) {
-  const [data, setData] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
+    console.log("ContextProvider useEffect");
+
     (async () => {
-      setData(await fetchAllTables());
+      const token = Cookies.get("auth_token");
+      if (token) {
+        const user = await User(token);
+
+        console.log("User:", user);
+        setUser(user);
+      }
     })();
   }, []);
 
   return (
-    <Context.Provider value={{ data, setData }}>{children}</Context.Provider>
+    <Context.Provider value={{ user, setUser }}>{children}</Context.Provider>
   );
 }
