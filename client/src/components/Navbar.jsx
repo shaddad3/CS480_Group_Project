@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Context } from "../Context";
 import { logout } from "../api/api";
@@ -9,7 +9,7 @@ import logo from "../assests/logo.jpg";
 
 export default function Navbar() {
   const { user, setUser } = useContext(Context);
-  console.log(user);
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     await logout();
