@@ -387,6 +387,37 @@ router.get("/students-by-department/:department_id", async (req, res) => {
 
 //fetching the courses along with their pre requisites
 
+router.get("/courses-with-prerequisites/", async (req, res) => {
+  try {
+      const database = await connection;
+
+      const [results] = await database.execute(
+          `SELECT 
+              c1.course_id AS course_id,
+              c1.course_name AS course_name,
+              c2.course_id AS prerequisite_course_id,
+              c2.course_name AS prerequisite_course_name
+          FROM 
+              Courses c1
+          LEFT JOIN 
+              Courses c2
+          ON 
+              c1.prerequisite_course_id = c2.course_id`
+      );
+
+      if (results.length === 0) {
+          return res.status(404).send("No courses found.");
+      }
+
+      res.json(results);
+  } catch (error) {
+      console.error("Error fetching courses with prerequisites:", error);
+      res.status(500).send("Error fetching courses with prerequisites.");
+  }
+});
+
+//fetching the courses along with their pre requisites by course_id
+
 router.get("/courses-with-prerequisites/:course_id", async (req, res) => {
   try {
       const database = await connection;
