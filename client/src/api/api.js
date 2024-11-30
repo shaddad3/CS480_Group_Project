@@ -13,9 +13,9 @@ export async function fetchAllTables() {
   }
 }
 
-export async function fetchStudentInfo() {
+export async function fetchStudentInfo(studentId) {
   try {
-    const response = await fetch(`${base_url}/student`);
+    const response = await fetch(`${base_url}/student/${studentId}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -26,9 +26,9 @@ export async function fetchStudentInfo() {
   }
 } 
 
-export async function fetchCoursePrereqs() {
+export async function fetchCoursePrereqs(courseId) {
   try {
-    const response = await fetch(`${base_url}/courses-with-prerequisites/:course_id`);
+    const response = await fetch(`${base_url}/courses-with-prerequisites/${courseId}`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

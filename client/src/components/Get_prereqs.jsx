@@ -1,44 +1,32 @@
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import "./Get_prereqs.css";
-
 import { fetchCoursePrereqs } from "../api/api";
 
 export default function Get_prereqs() {
   const [courseId, setCourseId] = useState(""); // Input for course ID
-  const [prerequisites, setPrerequisites] = useState([]); // Filtered prerequisites
-  const [allData, setAllData] = useState([]); // Store all query results
+  const [prerequisites, setPrerequisites] = useState([]); // Prerequisite results
   const [error, setError] = useState(""); // Error handling
+  const [loading, setLoading] = useState(false); // Loading state
 
-  // Fetch all course data on submit
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); // Reset error
     setPrerequisites([]); // Clear previous results
+    setLoading(true); // Set loading state
 
     try {
-      if (allData.length === 0) {
-        // Fetch all courses and prerequisites from the backend only once
-        useEffect(() => {
-            (async () => {
-              setAllData(await fetchCoursePrereqs());
-            })();
-          }, []);
-      }
-
-      // Filter data for the selected course ID
-      const filteredData = allData.filter(
-        (row) => row.course_id === courseId
-      );
-
-      if (filteredData.length === 0) {
+      const data = await fetchCoursePrereqs(courseId);
+      if (data.length === 0) {
         setError("No prerequisites found for this course.");
       } else {
-        setPrerequisites(filteredData);
+        setPrerequisites(data);
       }
     } catch (err) {
       console.error("Error fetching prerequisites:", err);
       setError("Error fetching prerequisites. Please try again later.");
+    } finally {
+      setLoading(false); // Reset loading state
     }
   };
 
@@ -59,6 +47,7 @@ export default function Get_prereqs() {
         </button>
       </form>
 
+      {loading && <p>Loading...</p>}
       {error && <p className="error">{error}</p>}
 
       {prerequisites.length > 0 && (

@@ -390,6 +390,7 @@ router.get("/students-by-department/:department_id", async (req, res) => {
 router.get("/courses-with-prerequisites/:course_id", async (req, res) => {
   try {
       const database = await connection;
+      const { course_id } = req.params;
 
       const [results] = await database.execute(
           `SELECT 
@@ -402,7 +403,10 @@ router.get("/courses-with-prerequisites/:course_id", async (req, res) => {
           LEFT JOIN 
               Courses c2
           ON 
-              c1.prerequisite_course_id = c2.course_id`
+              c1.prerequisite_course_id = c2.course_id
+          WHERE 
+            c1.course_id = ?`,
+          [course_id]
       );
 
       if (results.length === 0) {
