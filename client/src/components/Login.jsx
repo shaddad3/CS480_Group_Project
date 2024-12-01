@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { login } from "../api/api";
 import { Context } from "../Context";
@@ -7,11 +7,17 @@ import { Context } from "../Context";
 import "./Login.css";
 
 export default function Login() {
-  const { setUser } = useContext(Context);
+  const { user, setUser } = useContext(Context);
   const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    }
+  }, [user, navigate]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -54,12 +60,6 @@ export default function Login() {
           <button type="submit" className="loginbutton">
             Login
           </button>
-          <div>
-            Don’t have an account?{" "}
-            <Link className="loginbuttoninline" to="/register">
-              Create one
-            </Link>
-          </div>
         </form>
       </div>
     </div>

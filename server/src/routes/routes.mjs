@@ -60,8 +60,9 @@ router.post("/login", async (req, res) => {
         return res
           .cookie("auth_token", token, {
             httpOnly: true,
-            secure: true,
+            secure: process.env.NODE_ENV === "production",
             sameSite: "Strict",
+            path: "/",
           })
           .json({
             id: user[0][userType.idField],
@@ -81,7 +82,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/user", async (req, res) => {
+router.post("/fetchuser", async (req, res) => {
   const token = req.cookies.auth_token;
   if (!token) {
     return res.status(401).send("No token provided");
@@ -128,14 +129,34 @@ router.get("/user", async (req, res) => {
       return res.status(404).send("User not found");
     }
 
-    res.json({
-      id: user.id,
-      username: user.username,
-      role,
-      first_name: user.first_name,
-      last_name: user.last_name,
-      email: user.email,
-    });
+    if (role === "administrator") {
+      res.json({
+        id: user.administrator_id,
+        username: user.administrator_username,
+        role,
+        first_name: user.administrator_first_name,
+        last_name: user.administrator_last_name,
+        email: user.administrator_email,
+      });
+    } else if (role === "instructor") {
+      res.json({
+        id: user.instructor_id,
+        username: user.instructor_username,
+        role,
+        first_name: user.instructor_first_name,
+        last_name: user.instructor_last_name,
+        email: user.instructor_email,
+      });
+    } else if (role === "student") {
+      res.json({
+        id: user.student_id,
+        username: user.student_username,
+        role,
+        first_name: user.student_first_name,
+        last_name: user.student_last_name,
+        email: user.student_email,
+      });
+    }
   } catch (error) {
     console.error("Error verifying token:", error);
     res.status(500).send("Error verifying token");
@@ -143,7 +164,14 @@ router.get("/user", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("auth_token").json({ message: "Logged out" });
+  res
+    .clearCookie("auth_token", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "Strict",
+      path: "/",
+    })
+    .json({ message: "Logged out" });
 });
 
 router.get("/all", async (req, res) => {

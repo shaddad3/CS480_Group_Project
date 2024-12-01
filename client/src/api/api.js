@@ -1,4 +1,5 @@
 const base_url = "http://localhost:3000";
+import Cookies from "js-cookie";
 
 export async function login(username, password) {
   const response = await fetch(`${base_url}/login`, {
@@ -7,6 +8,7 @@ export async function login(username, password) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ username, password }),
+    credentials: "include",
   });
 
   if (response.ok) {
@@ -16,14 +18,13 @@ export async function login(username, password) {
   }
 }
 
-export async function User(token) {
+export async function fetchUser() {
   try {
-    const response = await fetch(`${base_url}/user`, {
+    const response = await fetch(`${base_url}/fetchuser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ token }),
       credentials: "include",
     });
     if (response.ok) {
@@ -34,13 +35,13 @@ export async function User(token) {
     }
   } catch (err) {
     console.error("Error verifying token:", err);
-    setUser(null);
   }
 }
 
 export async function logout() {
   const response = await fetch(`${base_url}/logout`, {
     method: "POST",
+    credentials: "include",
   });
 
   if (response.ok) {
