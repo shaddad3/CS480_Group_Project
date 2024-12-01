@@ -15,7 +15,12 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      navigate("/dashboard");
+      // Redirect based on role
+      if (user.role === "student") {
+        navigate("/Student_dashboard");
+      } else if (user.role === "administrator") {
+        navigate("/admin-dashboard");
+      }
     }
   }, [user, navigate]);
 
@@ -23,7 +28,15 @@ export default function Login() {
     event.preventDefault();
     const user = await login(username, password);
     setUser(user);
-    navigate("/dashboard");
+    // navigate("/dashboard");
+    if (user) {
+      // Redirect based on role
+      if (user.role === "student") {
+        navigate("/Student_dashboard");
+      } else if (user.role === "administrator") {
+        navigate("/admin-dashboard");
+      }
+    }
   };
 
   return (

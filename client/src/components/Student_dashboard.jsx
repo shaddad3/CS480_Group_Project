@@ -1,8 +1,9 @@
 // import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useContext } from "react-router-dom";
 import "./Student_dashboard.css"; // Import the CSS file
 
 function Student_dashboard() {
+  const { user, setUser } = useContext(Context);
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
