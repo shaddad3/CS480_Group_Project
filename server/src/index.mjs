@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import cookiePraser from "cookie-parser";
 
 import router from "./routes/routes.mjs";
 import database_connection from "./database_connection/database_connection.mjs";
@@ -23,6 +24,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors(corsOptions));
+app.use(cookiePraser());
 
 async function startServer() {
   try {

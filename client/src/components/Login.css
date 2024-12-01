@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
 
-  height: 100vh;
+  height: calc(100vh - 60px);
 
   background-color: var(--background_white);
 }
@@ -96,8 +96,4 @@
   color: var(--grey);
 
   font-style: italic;
-}
-
-.loginbuttoninline {
-  cursor: pointer;
 }
