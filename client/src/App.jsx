@@ -7,6 +7,7 @@ import AuthenticatedRoutes from "./components/AuthenticatedRoutes";
 import Register from "./components/Register";
 import Student_dashboard from "./components/Student_dashboard";
 import Get_prereqs from "./components/Get_prereqs";
+import Student_info from "./components/Student_info";
 
 import "./App.css";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/Student_dashboard" element={<Student_dashboard />} />
           <Route path="/Get_prereqs" element={<Get_prereqs />} />
+          <Route path="/Student_info" element={<Student_info />} />
         </Routes>
       </BrowserRouter>
     </div>

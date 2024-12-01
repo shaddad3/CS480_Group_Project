@@ -78,6 +78,20 @@ export async function fetchStudentInfo(studentId) {
   }
 } 
 
+
+export async function fetchStudentCourses(studentId) {
+  try {
+    const response = await fetch(`${base_url}/courses-by-student/${studentId}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching all tables:", error);
+  }
+} 
+
 export async function fetchCoursePrereqs(courseId) {
   try {
     const response = await fetch(`${base_url}/courses-with-prerequisites/${courseId}`);

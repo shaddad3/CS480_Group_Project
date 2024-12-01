@@ -1,9 +1,9 @@
 // import React from "react";
-import { useNavigate, useContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Student_dashboard.css"; // Import the CSS file
 
 function Student_dashboard() {
-  const { user, setUser } = useContext(Context);
+  // const { user, setUser } = useContext(Context);
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
@@ -22,7 +22,7 @@ function Student_dashboard() {
         </button>
         <button
           className="dashboard-button"
-          onClick={() => handleNavigation("/student-info")}
+          onClick={() => handleNavigation("/Student_info")}
         >
           Show Student Info and Schedule
         </button>
