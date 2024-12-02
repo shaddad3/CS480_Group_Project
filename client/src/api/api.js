@@ -65,6 +65,32 @@ export async function fetchAllTables() {
   }
 }
 
+export async function fetchCourses() {
+  try {
+    const response = await fetch(`${base_url}/courses`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching all tables:", error);
+  }
+}
+
+// Register for a course
+export async function registerForCourse(studentId, courseId) {
+  const response = await fetch(`${base_url}/register-course`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ student_id: studentId, course_id: courseId }),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to register for course");
+  }
+}
+
 export async function fetchStudentInfo(studentId) {
   try {
     const response = await fetch(`${base_url}/student/${studentId}`);

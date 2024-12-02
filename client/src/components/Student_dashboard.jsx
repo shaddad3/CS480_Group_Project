@@ -16,7 +16,7 @@ function Student_dashboard() {
       <div className="dashboard-options">
         <button
           className="dashboard-button"
-          onClick={() => handleNavigation("/register-for-courses")}
+          onClick={() => handleNavigation("/Register_courses")}
         >
           Register for Courses
         </button>

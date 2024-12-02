@@ -290,6 +290,92 @@ router.get("/courses/:id", async (req, res) => {
   }
 });
 
+// // Register a student for a course
+// router.post("/register-course", async (req, res) => {
+//   const { student_id, course_id } = req.body;
+
+//   try {
+//     const database = await connection;
+
+//     // Check if course exists
+//     const [courseExists] = await database.execute("SELECT * FROM Courses WHERE course_id = ?", [course_id]);
+//     if (courseExists.length === 0) {
+//       return res.status(404).send("Course not found");
+//     }
+
+//     // Check if student is already registered for the course
+//     const [alreadyRegistered] = await database.execute(
+//       "SELECT * FROM Takes WHERE student_id = ? AND course_id = ?",
+//       [student_id, course_id]
+//     );
+//     if (alreadyRegistered.length > 0) {
+//       return res.status(400).send("Student is already registered for this course");
+//     }
+
+//     // Register student for the course
+//     await database.execute("INSERT INTO Takes (student_id, course_id) VALUES (?, ?)", [student_id, course_id]);
+//     res.status(200).send("Registration successful");
+//   } catch (error) {
+//     console.error("Error registering for course:", error);
+//     res.status(500).send("Error registering for course");
+//   }
+// });
+
+router.post("/register-course", async (req, res) => {
+  const { student_id, course_id } = req.body;
+
+  try {
+    const database = await connection;
+
+    // Start a transaction
+    await database.beginTransaction();
+
+    // Check if the course has available seats
+    const [course] = await database.execute(
+      `SELECT course_available_seats FROM Courses WHERE course_id = ?`,
+      [course_id]
+    );
+
+    if (course.length === 0) {
+      await database.rollback();
+      return res.status(404).json({ message: "Course not found." });
+    }
+
+    const availableSeats = course[0].course_available_seats;
+
+    if (availableSeats <= 0) {
+      await database.rollback();
+      return res.status(400).json({ message: "No seats available for this course." });
+    }
+
+    // Register the student for the course
+    await database.execute(
+      `INSERT INTO Takes (student_id, course_id) VALUES (?, ?)`,
+      [student_id, course_id]
+    );
+
+    // Update the course's available seats
+    await database.execute(
+      `UPDATE Courses SET course_available_seats = course_available_seats - 1 WHERE course_id = ?`,
+      [course_id]
+    );
+
+    // Commit the transaction
+    await database.commit();
+
+    res.json({ message: "Course registered successfully." });
+  } catch (error) {
+    console.error("Error registering course:", error);
+
+    // Rollback the transaction in case of an error
+    if (database && database.rollback) {
+      await database.rollback();
+    }
+
+    res.status(500).json({ message: "Error registering course." });
+  }
+});
+
 // Fetch all Teaches
 router.get("/teaches", async (req, res) => {
   try {
