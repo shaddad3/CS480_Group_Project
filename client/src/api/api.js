@@ -91,6 +91,31 @@ export async function registerForCourse(studentId, courseId) {
   }
 }
 
+
+//delete course
+export async function deleteCourse(courseId) {
+  try {
+    const response = await fetch(`http://localhost:3000/courses/${courseId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(errorMessage);
+    }
+
+    return "Course deleted successfully.";
+  } catch (error) {
+    console.error("Error deleting course:", error.message);
+    throw new Error("Failed to delete course. Please try again.");
+  }
+}
+
+
+
 export async function fetchStudentInfo(studentId) {
   try {
     const response = await fetch(`${base_url}/student/${studentId}`);
@@ -128,5 +153,23 @@ export async function fetchCoursePrereqs(courseId) {
     return data;
   } catch (error) {
     console.error("Error fetching all tables:", error);
+  }
+}
+
+//add instructor
+export async function addInstructor(instructorDetails) {
+  try {
+    const response = await fetch("http://localhost:3000/instructors", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(instructorDetails),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to add instructor.");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error adding instructor:", error);
+    throw error;
   }
 }
