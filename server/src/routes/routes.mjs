@@ -290,37 +290,6 @@ router.get("/courses/:id", async (req, res) => {
   }
 });
 
-// // Register a student for a course
-// router.post("/register-course", async (req, res) => {
-//   const { student_id, course_id } = req.body;
-
-//   try {
-//     const database = await connection;
-
-//     // Check if course exists
-//     const [courseExists] = await database.execute("SELECT * FROM Courses WHERE course_id = ?", [course_id]);
-//     if (courseExists.length === 0) {
-//       return res.status(404).send("Course not found");
-//     }
-
-//     // Check if student is already registered for the course
-//     const [alreadyRegistered] = await database.execute(
-//       "SELECT * FROM Takes WHERE student_id = ? AND course_id = ?",
-//       [student_id, course_id]
-//     );
-//     if (alreadyRegistered.length > 0) {
-//       return res.status(400).send("Student is already registered for this course");
-//     }
-
-//     // Register student for the course
-//     await database.execute("INSERT INTO Takes (student_id, course_id) VALUES (?, ?)", [student_id, course_id]);
-//     res.status(200).send("Registration successful");
-//   } catch (error) {
-//     console.error("Error registering for course:", error);
-//     res.status(500).send("Error registering for course");
-//   }
-// });
-
 router.post("/register-course", async (req, res) => {
   const { student_id, course_id } = req.body;
 
