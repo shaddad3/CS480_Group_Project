@@ -57,7 +57,7 @@ export async function fetchStudents(req, res) {
   }
 }
 
-export async function fetchRegistrations(req, res) {
+export async function fetchTakes(req, res) {
   try {
     const database = await connection;
     const [students] = await database.execute("SELECT * FROM Takes");
@@ -68,7 +68,7 @@ export async function fetchRegistrations(req, res) {
   }
 }
 
-export async function fetchTeachings(req, res) {
+export async function fetchTeaches(req, res) {
   try {
     const database = await connection;
     const [students] = await database.execute("SELECT * FROM Teaches");
@@ -76,5 +76,27 @@ export async function fetchTeachings(req, res) {
   } catch (error) {
     console.error("Error fetching teachings:", error);
     res.status(500).send("Error fetching teachings");
+  }
+}
+
+/**************************************************************************************************************************/
+export async function fetchTakesForStudent(req, res) {
+  try {
+    const database = await connection;
+    const { student_id } = req.params;
+
+    const [results] = await database.execute(
+      `SELECT * FROM Takes WHERE Student.student_id = ?`,
+      [student_id]
+    );
+
+    if (results.length === 0) {
+      return res.status(404).send("No courses found for the specified student");
+    }
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error fetching courses by student ID:", error);
+    res.status(500).send("Error fetching courses by student ID");
   }
 }

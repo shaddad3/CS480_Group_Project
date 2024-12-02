@@ -13,9 +13,10 @@ import {
   fetchInstructors,
   fetchCourses,
   fetchStudents,
-  fetchRegistrations,
-  fetchTeachings,
-} from "./administrator.mjs";
+  fetchTakes,
+  fetchTeaches,
+  fetchTakesForStudent,
+} from "./fetch.mjs";
 
 const router = express.Router();
 
@@ -30,58 +31,18 @@ router.get("/courses-by-student/:student_id", CoursesByStudent);
 router.get("/courses-with-prerequisites/", CoursesWithPrerequisites);
 router.post("/register-course", RegisterCourse);
 
-// Administrator
-router.get("/administrators", fetchAdministrators);
-router.get("/departments", fetchDepartments);
-router.get("/instructors", fetchInstructors);
-router.get("/courses", fetchCourses);
-router.get("/students", fetchStudents);
-router.get("/registrations", fetchRegistrations);
-router.get("/teachings", fetchTeachings);
+// fetch
+router.get("/fetch_administrators", fetchAdministrators);
+router.get("/fetch_departments", fetchDepartments);
+router.get("/fetch_instructors", fetchInstructors);
+router.get("/fetch_courses", fetchCourses);
+router.get("/fetch_students", fetchStudents);
+router.get("/fetch_takes", fetchTakes);
+router.get("/fetch_teaches", fetchTeaches);
+router.get("/fetch_takes_for_student/:student_id", fetchTakesForStudent);
 
-// router.get("/all", async (req, res) => {
-//   try {
-//     const database = await connection;
-//     const [administratorTable] = await database.execute(
-//       "SELECT * FROM Administrator"
-//     );
-//     const [departmentTable] = await database.execute(
-//       "SELECT * FROM Department"
-//     );
-//     const [instructorTable] = await database.execute(
-//       "SELECT * FROM Instructor"
-//     );
-//     const [coursesTable] = await database.execute("SELECT * FROM Courses");
-//     const [teachesTable] = await database.execute("SELECT * FROM Teaches");
-//     const [studentTable] = await database.execute("SELECT * FROM Student");
-//     const [takesTable] = await database.execute("SELECT * FROM Takes");
-
-//     res.json({
-//       administratorTable,
-//       departmentTable,
-//       instructorTable,
-//       coursesTable,
-//       teachesTable,
-//       studentTable,
-//       takesTable,
-//     });
-//   } catch (error) {
-//     console.error("Error fetching all tables:", error);
-//     res.status(500).send("Error fetching all tables");
-//   }
-// });
-
-// // Fetch all Students
-// router.get("/student", async (req, res) => {
-//   try {
-//     const database = await connection;
-//     const [studentTable] = await database.execute("SELECT * FROM Student");
-//     res.json(studentTable);
-//   } catch (error) {
-//     console.error("Error fetching students:", error);
-//     res.status(500).send("Error fetching students");
-//   }
-// });
+//add
+// router.get("/add_department", addDepartment);
 
 // // Fetch a Student by ID
 // router.get("/student/:id", async (req, res) => {
@@ -99,20 +60,6 @@ router.get("/teachings", fetchTeachings);
 //   } catch (error) {
 //     console.error("Error fetching student by ID:", error);
 //     res.status(500).send("Error fetching student by ID");
-//   }
-// });
-
-// // Fetch all Instructors
-// router.get("/instructor", async (req, res) => {
-//   try {
-//     const database = await connection;
-//     const [instructorTable] = await database.execute(
-//       "SELECT * FROM Instructor"
-//     );
-//     res.json(instructorTable);
-//   } catch (error) {
-//     console.error("Error fetching instructors:", error);
-//     res.status(500).send("Error fetching instructors");
 //   }
 // });
 
@@ -154,18 +101,6 @@ router.get("/teachings", fetchTeachings);
 //   }
 // });
 
-// // Fetch all Teaches
-// router.get("/teaches", async (req, res) => {
-//   try {
-//     const database = await connection;
-//     const [teachesTable] = await database.execute("SELECT * FROM Teaches");
-//     res.json(teachesTable);
-//   } catch (error) {
-//     console.error("Error fetching teaches:", error);
-//     res.status(500).send("Error fetching teaches");
-//   }
-// });
-
 // // Fetch a Teaches record by ID
 // router.get("/teaches/:id", async (req, res) => {
 //   try {
@@ -182,20 +117,6 @@ router.get("/teachings", fetchTeachings);
 //   } catch (error) {
 //     console.error("Error fetching teaches record by ID:", error);
 //     res.status(500).send("Error fetching teaches record by ID");
-//   }
-// });
-
-// // Fetch all Departments
-// router.get("/department", async (req, res) => {
-//   try {
-//     const database = await connection;
-//     const [departmentTable] = await database.execute(
-//       "SELECT * FROM Department"
-//     );
-//     res.json(departmentTable);
-//   } catch (error) {
-//     console.error("Error fetching departments:", error);
-//     res.status(500).send("Error fetching departments");
 //   }
 // });
 
