@@ -72,3 +72,54 @@ export async function CoursesWithPrerequisites(req, res) {
     res.status(500).send("Error fetching courses with prerequisites.");
   }
 }
+
+export async function RegisterCourse(req, res) {
+  const { student_id, course_id } = req.body;
+
+  try {
+    const database = await connection;
+
+    await database.beginTransaction();
+
+    const [course] = await database.execute(
+      `SELECT course_available_seats FROM Courses WHERE course_id = ?`,
+      [course_id]
+    );
+
+    if (course.length === 0) {
+      await database.rollback();
+      return res.status(404).json({ message: "Course not found." });
+    }
+
+    const availableSeats = course[0].course_available_seats;
+
+    if (availableSeats <= 0) {
+      await database.rollback();
+      return res
+        .status(400)
+        .json({ message: "No seats available for this course." });
+    }
+
+    await database.execute(
+      `INSERT INTO Takes (student_id, course_id) VALUES (?, ?)`,
+      [student_id, course_id]
+    );
+
+    await database.execute(
+      `UPDATE Courses SET course_available_seats = course_available_seats - 1 WHERE course_id = ?`,
+      [course_id]
+    );
+
+    await database.commit();
+
+    res.json({ message: "Course registered successfully." });
+  } catch (error) {
+    console.error("Error registering course:", error);
+
+    if (database && database.rollback) {
+      await database.rollback();
+    }
+
+    res.status(500).json({ message: "Error registering course." });
+  }
+}

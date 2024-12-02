@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 
-import { Context } from "../Context";
-import { fetchStudentCourses } from "../api/student";
+import { Context } from "../../Context";
+import { fetchStudentCourses } from "../../api/student";
 
 import "./StudentInformation.css";
 

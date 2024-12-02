@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./GetPrerequisites.css";
-import { fetchCoursePrerequisites } from "../api/student";
+import { fetchCoursePrerequisites } from "../../api/student";
 
 export default function GetPrerequisites() {
   const [courseId, setCourseId] = useState("");

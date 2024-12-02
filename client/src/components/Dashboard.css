@@ -25,11 +25,13 @@
 }
 
 .panel {
-  width: calc(100% - var(--sidenavigation_width));
-  min-height: calc(100vh - var(--navbar_height));
+  width: calc(100vw - var(--sidenavigation_width));
+  height: calc(100vh - var(--navbar_height));
 
   margin-left: var(--sidenavigation_width);
-  padding: 15px;
+  margin-bottom: 15px;
+
+  padding-right: 5px;
 
   background-color: var(--background_white);
 
@@ -59,4 +61,25 @@
 .sidenavigationbuttonactive {
   color: var(--white);
   background-color: var(--bright_blue);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  width: calc(100%) - 60px;
+
+  padding: 15px;
+  margin: 15px;
+  margin-right: 10px;
+
+  background-color: var(--white);
+
+  border-radius: 15px;
+  border: 1px solid var(--light_grey);
+
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }

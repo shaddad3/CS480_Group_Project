@@ -2,5 +2,5 @@
   display: flex;
   flex-direction: column;
 
-  padding-top: var(--navbar_height);
+  margin-top: var(--navbar_height);
 }

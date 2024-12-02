@@ -5,7 +5,17 @@ import {
   Courses,
   CoursesByStudent,
   CoursesWithPrerequisites,
+  RegisterCourse,
 } from "./Student.mjs";
+import {
+  fetchAdministrators,
+  fetchDepartments,
+  fetchInstructors,
+  fetchCourses,
+  fetchStudents,
+  fetchRegistrations,
+  fetchTeachings,
+} from "./administrator.mjs";
 
 const router = express.Router();
 
@@ -18,6 +28,16 @@ router.post("/logout", Logout);
 router.get("/courses", Courses);
 router.get("/courses-by-student/:student_id", CoursesByStudent);
 router.get("/courses-with-prerequisites/", CoursesWithPrerequisites);
+router.post("/register-course", RegisterCourse);
+
+// Administrator
+router.get("/administrators", fetchAdministrators);
+router.get("/departments", fetchDepartments);
+router.get("/instructors", fetchInstructors);
+router.get("/courses", fetchCourses);
+router.get("/students", fetchStudents);
+router.get("/registrations", fetchRegistrations);
+router.get("/teachings", fetchTeachings);
 
 // router.get("/all", async (req, res) => {
 //   try {
@@ -131,64 +151,6 @@ router.get("/courses-with-prerequisites/", CoursesWithPrerequisites);
 //   } catch (error) {
 //     console.error("Error fetching course by ID:", error);
 //     res.status(500).send("Error fetching course by ID");
-//   }
-// });
-
-// // Register a student for a course
-// router.post("/register-course", async (req, res) => {
-//   const { student_id, course_id } = req.body;
-
-//   try {
-//     const database = await connection;
-
-//     // Start a transaction
-//     await database.beginTransaction();
-
-//     // Check if the course has available seats
-//     const [course] = await database.execute(
-//       `SELECT course_available_seats FROM Courses WHERE course_id = ?`,
-//       [course_id]
-//     );
-
-//     if (course.length === 0) {
-//       await database.rollback();
-//       return res.status(404).json({ message: "Course not found." });
-//     }
-
-//     const availableSeats = course[0].course_available_seats;
-
-//     if (availableSeats <= 0) {
-//       await database.rollback();
-//       return res
-//         .status(400)
-//         .json({ message: "No seats available for this course." });
-//     }
-
-//     // Register the student for the course
-//     await database.execute(
-//       `INSERT INTO Takes (student_id, course_id) VALUES (?, ?)`,
-//       [student_id, course_id]
-//     );
-
-//     // Update the course's available seats
-//     await database.execute(
-//       `UPDATE Courses SET course_available_seats = course_available_seats - 1 WHERE course_id = ?`,
-//       [course_id]
-//     );
-
-//     // Commit the transaction
-//     await database.commit();
-
-//     res.json({ message: "Course registered successfully." });
-//   } catch (error) {
-//     console.error("Error registering course:", error);
-
-//     // Rollback the transaction in case of an error
-//     if (database && database.rollback) {
-//       await database.rollback();
-//     }
-
-//     res.status(500).json({ message: "Error registering course." });
 //   }
 // });
 
