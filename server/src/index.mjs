@@ -18,6 +18,8 @@ const port = process.env.PORT || 3000;
 
 app.use(cors(corsOptions));
 app.use(cookiePraser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 async function startServer() {
   try {

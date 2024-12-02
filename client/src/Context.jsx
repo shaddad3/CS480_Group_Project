@@ -1,36 +1,15 @@
-// import { createContext, useEffect, useState } from "react";
-
-// import { fetchAllTables } from "./api/api";
-
-// export const Context = createContext(null);
-
-// export function ContextProvider({ children }) {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     (async () => {
-//       setData(await fetchAllTables());
-//     })();
-//   }, []);
-
-//   return (
-//     <Context.Provider value={{ data, setData }}>{children}</Context.Provider>
-//   );
-// }
 import { createContext, useState, useEffect } from "react";
-import Cookies from "js-cookie";
 
 export const Context = createContext(null);
-import { fetchUser } from "./api/api";
+import { profile } from "./api/authentication";
 
 export function ContextProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    console.log("ContextProvider useEffect");
-    console.log(user);
+    console.log("user:", user);
     (async () => {
-      const user = await fetchUser();
+      const user = await profile();
       setUser(user);
     })();
   }, []);

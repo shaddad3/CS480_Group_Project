@@ -1,9 +1,11 @@
 import { useEffect, useState, useContext } from "react";
-import "./Student_info.css"; // Import the CSS file
-import { fetchStudentCourses } from "../api/api";
-import { Context } from "../Context";
 
-export default function Student_info() {
+import { Context } from "../Context";
+import { fetchStudentCourses } from "../api/student";
+
+import "./StudentInformation.css";
+
+export default function StudentInformation() {
   const { user, setUser } = useContext(Context); // Get the currently logged-in student
   const [studentCourses, setStudentCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +29,9 @@ export default function Student_info() {
 
   return (
     <div className="student-dashboard">
-      <h1>Welcome, {user.first_name} {user.last_name}</h1>
+      <h1>
+        Welcome, {user.first_name} {user.last_name}
+      </h1>
       <p>Email: {user.email}</p>
 
       <h2>Courses Taken</h2>

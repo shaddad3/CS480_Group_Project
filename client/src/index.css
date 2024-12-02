@@ -9,7 +9,10 @@
   --darker_blue: #0056b3;
   --black: #1c1c1c;
   --grey: #aaaaaa;
-  --lightgrey: #cccccc;
+  --light_grey: #cccccc;
+
+  --navbar_height: 60px;
+  --sidenavigation_width: 300px;
 
   font-family: "Inter", sans-serif;
 
@@ -17,11 +20,15 @@
 
   margin: 0px;
   padding: 0px;
+
+  overflow: hidden;
 }
 
 body {
   margin: 0px;
   padding: 0px;
+
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {

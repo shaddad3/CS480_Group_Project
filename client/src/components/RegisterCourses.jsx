@@ -1,9 +1,11 @@
 import { useEffect, useState, useContext } from "react";
-import { fetchCourses, registerForCourse } from "../api/api";
-import { Context } from "../Context";
-import "./Register_courses.css";
 
-export default function Register_courses() {
+import { Context } from "../Context";
+import { fetchCourses, registerForCourse } from "../api/student";
+
+import "./RegisterCourses.css";
+
+export default function RegisterCourses() {
   const { user, setUser } = useContext(Context);
   const [courses, setCourses] = useState([]);
   const [courseId, setCourseId] = useState("");
