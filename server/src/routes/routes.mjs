@@ -174,6 +174,86 @@ router.post("/logout", (req, res) => {
     .json({ message: "Logged out" });
 });
 
+//add courses
+router.post("/courses", async (req, res) => {
+  const {
+    course_name,
+    course_credits,
+    course_instruction_method,
+    course_lecture_day,
+    course_lecture_time,
+    course_lecture_location,
+    course_available_seats,
+    prerequisite_course_id,
+    administrator_id,
+    department_id,
+  } = req.body;
+
+  try {
+    const database = await connection;
+
+    await database.execute(
+      `INSERT INTO Courses (
+        course_name,
+        course_credits,
+        course_instruction_method,
+        course_lecture_day,
+        course_lecture_time,
+        course_lecture_location,
+        course_available_seats,
+        prerequisite_course_id,
+        administrator_id,
+        department_id
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        course_name,
+        course_credits,
+        course_instruction_method,
+        course_lecture_day,
+        course_lecture_time,
+        course_lecture_location,
+        course_available_seats,
+        prerequisite_course_id || null,
+        administrator_id || null, // Handle null administrator_id if needed
+        department_id || null,   // Handle null department_id if needed
+      ]
+    );
+
+    res.status(201).send("Course added successfully.");
+  } catch (error) {
+    console.error("Error adding course:", error);
+    res.status(500).send("Error adding course.");
+  }
+});
+
+//add instructor
+router.post("/instructors", async (req, res) => {
+  const { instructor_username, instructor_password, instructor_first_name, instructor_last_name, instructor_email, administrator_id, department_id } = req.body;
+
+  try {
+    const database = await connection;
+    await database.execute(
+      "INSERT INTO Instructor (instructor_username, instructor_password, instructor_first_name, instructor_last_name, instructor_email, administrator_id, department_id) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      [
+        instructor_username,
+        instructor_password,
+        instructor_first_name,
+        instructor_last_name,
+        instructor_email,
+        administrator_id,
+        department_id,
+      ]
+    );
+    res.status(201).send("Instructor added successfully.");
+  } catch (error) {
+    console.error("Error adding instructor:", error);
+    res.status(500).send("Error adding instructor.");
+  }
+});
+
+
+
+
 router.get("/all", async (req, res) => {
   try {
     const database = await connection;
@@ -215,6 +295,50 @@ router.get("/student", async (req, res) => {
   } catch (error) {
     console.error("Error fetching students:", error);
     res.status(500).send("Error fetching students");
+  }
+});
+
+router.get("/students", async (req, res) => {
+  try {
+    const database = await connection;
+    const [students] = await database.execute(
+      "SELECT student_username, student_first_name, student_last_name, student_email, student_level FROM Student"
+    );
+    res.json(students);
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    res.status(500).send("Error fetching students");
+  }
+});
+
+// Fetch a stuent by search
+router.get("/students/search", async (req, res) => {
+  const { query } = req.query; // Query parameter for search
+  try {
+    const database = await connection;
+    const [students] = await database.execute(
+      "SELECT student_username, student_first_name, student_last_name, student_email, student_level FROM Student WHERE student_first_name LIKE ? OR student_last_name LIKE ? OR student_username LIKE ?",
+      [`%${query}%`, `%${query}%`, `%${query}%`]
+    );
+    res.json(students);
+  } catch (error) {
+    console.error("Error searching students:", error);
+    res.status(500).send("Error searching students");
+  }
+});
+
+router.get("/students/:username", async (req, res) => {
+  const { username } = req.params;
+  try {
+    const database = await connection;
+    const [student] = await database.execute(
+      "SELECT student_username, student_first_name, student_last_name, student_email, student_level FROM Student WHERE student_username = ?",
+      [username]
+    );
+    res.json(student[0]); // Return single student object
+  } catch (error) {
+    console.error("Error fetching student:", error);
+    res.status(500).send("Error fetching student");
   }
 });
 
@@ -346,6 +470,78 @@ router.post("/register-course", async (req, res) => {
   }
 });
 
+
+// DELETE request for deleting a course by ID
+router.delete("/courses/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const database = await connection;
+    const [result] = await database.execute(
+      "DELETE FROM Courses WHERE course_id = ?",
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).send("Course not found");
+    }
+
+    res.send("Course deleted successfully");
+  } catch (error) {
+    console.error("Error deleting course:", error);
+    res.status(500).send("Error deleting course");
+  }
+});
+
+
+//delete a course
+router.delete("/courses/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const database = await connection;
+
+    const [result] = await database.execute("DELETE FROM Courses WHERE course_id = ?", [id]);
+
+    if (result.affectedRows === 0) {
+      return res.status(404).send("Course not found.");
+    }
+
+    res.status(200).send("Course deleted successfully.");
+  } catch (error) {
+    console.error("Error deleting course:", error);
+
+    if (error.code === "ER_ROW_IS_REFERENCED_2") {
+      return res.status(409).send("Cannot delete course: dependent data exists.");
+    }
+
+    res.status(500).send("Error deleting course.");
+  }
+});
+
+//delete instructor
+router.delete("/instructors/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const database = await connection;
+    const [result] = await database.execute("DELETE FROM Instructor WHERE instructor_id = ?", [id]);
+
+    if (result.affectedRows > 0) {
+      res.status(200).send("Instructor deleted successfully.");
+    } else {
+      res.status(404).send("Instructor not found.");
+    }
+  } catch (error) {
+    console.error("Error deleting instructor:", error);
+    res.status(500).send("Error deleting instructor.");
+  }
+});
+
+
+
+
+
+
 // Fetch all Teaches
 router.get("/teaches", async (req, res) => {
   try {
@@ -401,6 +597,48 @@ router.get("/department/:id", async (req, res) => {
     res.status(500).send("Error fetching department by ID");
   }
 });
+
+//add department
+router.post("/department", async (req, res) => {
+  const { department_name, department_head_first_name, department_head_last_name } = req.body;
+
+  try {
+    const database = await connection;
+    await database.execute(
+      `INSERT INTO Department (department_name, department_head_first_name, department_head_last_name) 
+      VALUES (?, ?, ?)`,
+      [department_name, department_head_first_name, department_head_last_name]
+    );
+
+    res.status(201).send("Department added successfully.");
+  } catch (error) {
+    console.error("Error adding department:", error);
+    res.status(500).send("Error adding department.");
+  }
+});
+
+
+
+//delete deaprment
+router.delete("/department/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const database = await connection;
+    const [result] = await database.execute("DELETE FROM Department WHERE department_id = ?", [id]);
+
+    if (result.affectedRows > 0) {
+      res.status(200).send("Department deleted successfully.");
+    } else {
+      res.status(404).send("Department not found.");
+    }
+  } catch (error) {
+    console.error("Error deleting department:", error);
+    res.status(500).send("Error deleting department.");
+  }
+});
+
+
 
 /// Fetching all students who have taken a specific course
 router.get("/students-by-course/:course_id", async (req, res) => {
