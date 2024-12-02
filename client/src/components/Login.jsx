@@ -15,7 +15,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      // Redirect based on role
+      // Redirect based on rol
       if (user.role === "student") {
         navigate("/Student_dashboard");
       } else if (user.role === "administrator") {
