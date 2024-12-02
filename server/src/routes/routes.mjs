@@ -223,7 +223,7 @@ router.get("/student/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [studentTable] = await database.execute("SELECT * FROM Student WHERE id = ?", [id]);
+    const [studentTable] = await database.execute("SELECT * FROM Student WHERE student_id = ?", [id]);
     if (studentTable.length === 0) {
       return res.status(404).send("Student not found");
     }
@@ -251,7 +251,7 @@ router.get("/instructor/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [instructorTable] = await database.execute("SELECT * FROM Instructor WHERE id = ?", [id]);
+    const [instructorTable] = await database.execute("SELECT * FROM Instructor WHERE instructor_id = ?", [id]);
     if (instructorTable.length === 0) {
       return res.status(404).send("Instructor not found");
     }
@@ -263,10 +263,10 @@ router.get("/instructor/:id", async (req, res) => {
 });
 
 // Fetch all Courses
-router.get("/course", async (req, res) => {
+router.get("/courses", async (req, res) => {
   try {
     const database = await connection;
-    const [courseTable] = await database.execute("SELECT * FROM Course");
+    const [courseTable] = await database.execute("SELECT * FROM Courses");
     res.json(courseTable);
   } catch (error) {
     console.error("Error fetching courses:", error);
@@ -275,11 +275,11 @@ router.get("/course", async (req, res) => {
 });
 
 // Fetch a Course by ID
-router.get("/course/:id", async (req, res) => {
+router.get("/courses/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [courseTable] = await database.execute("SELECT * FROM Course WHERE id = ?", [id]);
+    const [courseTable] = await database.execute("SELECT * FROM Courses WHERE course_id = ?", [id]);
     if (courseTable.length === 0) {
       return res.status(404).send("Course not found");
     }
@@ -287,6 +287,62 @@ router.get("/course/:id", async (req, res) => {
   } catch (error) {
     console.error("Error fetching course by ID:", error);
     res.status(500).send("Error fetching course by ID");
+  }
+});
+
+// Register a student for a course
+router.post("/register-course", async (req, res) => {
+  const { student_id, course_id } = req.body;
+
+  try {
+    const database = await connection;
+
+    // Start a transaction
+    await database.beginTransaction();
+
+    // Check if the course has available seats
+    const [course] = await database.execute(
+      `SELECT course_available_seats FROM Courses WHERE course_id = ?`,
+      [course_id]
+    );
+
+    if (course.length === 0) {
+      await database.rollback();
+      return res.status(404).json({ message: "Course not found." });
+    }
+
+    const availableSeats = course[0].course_available_seats;
+
+    if (availableSeats <= 0) {
+      await database.rollback();
+      return res.status(400).json({ message: "No seats available for this course." });
+    }
+
+    // Register the student for the course
+    await database.execute(
+      `INSERT INTO Takes (student_id, course_id) VALUES (?, ?)`,
+      [student_id, course_id]
+    );
+
+    // Update the course's available seats
+    await database.execute(
+      `UPDATE Courses SET course_available_seats = course_available_seats - 1 WHERE course_id = ?`,
+      [course_id]
+    );
+
+    // Commit the transaction
+    await database.commit();
+
+    res.json({ message: "Course registered successfully." });
+  } catch (error) {
+    console.error("Error registering course:", error);
+
+    // Rollback the transaction in case of an error
+    if (database && database.rollback) {
+      await database.rollback();
+    }
+
+    res.status(500).json({ message: "Error registering course." });
   }
 });
 
@@ -335,7 +391,7 @@ router.get("/department/:id", async (req, res) => {
   try {
     const database = await connection;
     const { id } = req.params;
-    const [departmentTable] = await database.execute("SELECT * FROM Department WHERE id = ?", [id]);
+    const [departmentTable] = await database.execute("SELECT * FROM Department WHERE department_id = ?", [id]);
     if (departmentTable.length === 0) {
       return res.status(404).send("Department not found");
     }
@@ -347,27 +403,27 @@ router.get("/department/:id", async (req, res) => {
 });
 
 /// Fetching all students who have taken a specific course
-router.get("/students-by-course/:courseId", async (req, res) => {
+router.get("/students-by-course/:course_id", async (req, res) => {
   try {
     const database = await connection;
-    const { courseId } = req.params;
+    const { course_id } = req.params;
 
     const [results] = await database.execute(
       `SELECT 
-        Student.UIN AS student_uin,
-        Student.name AS student_name,
-        Student.email AS student_email,
+        Student.student_id AS student_id,
+        Student.student_username AS student_username,
+        Student.student_email AS student_email,
         Courses.course_id AS course_id,
         Courses.course_name AS course_name
       FROM 
         Student
       JOIN 
-        Takes ON Student.UIN = Takes.student_id
+        Takes ON Student.student_id = Takes.student_id
       JOIN 
         Courses ON Takes.course_id = Courses.course_id
       WHERE 
         Courses.course_id = ?`,
-      [courseId]
+      [course_id]
     );
 
     if (results.length === 0) {
@@ -381,27 +437,27 @@ router.get("/students-by-course/:courseId", async (req, res) => {
   }
 });
 
-// Fetching all courses taken by a specific student
-router.get("/courses-by-student/:studentId", async (req, res) => {
+// Fetching all courses taken by a specific student 
+router.get("/courses-by-student/:student_id", async (req, res) => {
   try {
     const database = await connection;
-    const { studentId } = req.params;
+    const { student_id } = req.params;
 
     const [results] = await database.execute(
       `SELECT 
         Courses.course_id AS course_id,
         Courses.course_name AS course_name,
-        Student.UIN AS student_uin,
-        Student.name AS student_name
+        Student.student_id AS student_id,
+        Student.student_username AS student_username
       FROM 
         Courses
       JOIN 
         Takes ON Courses.course_id = Takes.course_id
       JOIN 
-        Student ON Takes.student_id = Student.UIN
+        Student ON Takes.student_id = Student.student_id
       WHERE 
-        Student.UIN = ?`,
-      [studentId]
+        Student.student_id = ?`,
+      [student_id]
     );
 
     if (results.length === 0) {
@@ -416,26 +472,26 @@ router.get("/courses-by-student/:studentId", async (req, res) => {
 });
 
 // Fetching all courses taught by a specific instructor
-router.get("/courses-by-instructor/:instructorId", async (req, res) => {
+router.get("/courses-by-instructor/:instructor_id", async (req, res) => {
   try {
     const database = await connection;
-    const { instructorId } = req.params;
+    const { instructor_id } = req.params;
 
     const [results] = await database.execute(
       `SELECT 
         Courses.course_id AS course_id,
         Courses.course_name AS course_name,
-        Instructor.UIN AS instructor_uin,
-        Instructor.name AS instructor_name
+        Instructor.instructor_id AS instructor_id,
+        Instructor.instructor_username AS instructor_username
       FROM 
         Courses
       JOIN 
         Teaches ON Courses.course_id = Teaches.course_id
       JOIN 
-        Instructor ON Teaches.inst_id = Instructor.UIN
+        Instructor ON Teaches.instructor_id = Instructor.instructor_id
       WHERE 
-        Instructor.UIN = ?`,
-      [instructorId]
+        Instructor.instructor_id = ?`,
+      [instructor_id]
     );
 
     if (results.length === 0) {
@@ -450,24 +506,24 @@ router.get("/courses-by-instructor/:instructorId", async (req, res) => {
 });
 
 // Fetching all courses offered by a specific department
-router.get("/courses-by-department/:departmentId", async (req, res) => {
+router.get("/courses-by-department/:department_id", async (req, res) => {
   try {
     const database = await connection;
-    const { departmentId } = req.params;
+    const { department_id } = req.params;
 
     const [results] = await database.execute(
       `SELECT 
         Courses.course_id AS course_id,
         Courses.course_name AS course_name,
-        Department.dept_id AS department_id,
-        Department.dept_name AS department_name
+        Department.department_id AS department_id,
+        Department.department_name AS department_name
       FROM 
         Courses
       JOIN 
-        Department ON Courses.dept_name = Department.dept_name
+        Department ON Courses.department_id = Department.department_id
       WHERE 
-        Department.dept_id = ?`,
-      [departmentId]
+        Department.department_id = ?`,
+      [department_id]
     );
 
     if (results.length === 0) {
@@ -485,27 +541,27 @@ router.get("/courses-by-department/:departmentId", async (req, res) => {
 
 // Fetching all students in a department
 
-router.get("/students-by-department/:departmentId", async (req, res) => {
+router.get("/students-by-department/:department_id", async (req, res) => {
   try {
     const database = await connection;
-    const { departmentId } = req.params;
+    const { department_id } = req.params;
 
     const [results] = await database.execute(
       `SELECT 
-        Student.UIN AS student_uin,
-        Student.name AS student_name,
-        Student.email AS student_email,
-        Department.dept_id AS department_id,
-        Department.dept_name AS department_name
+        Student.student_id AS student_id,
+        Student.student_username AS student_username,
+        Student.student_email AS student_email,
+        Department.department_id AS department_id,
+        Department.department_name AS department_name
       FROM 
         Student
       JOIN 
-        Courses ON Courses.admin_id = Student.admin_id
+        Courses ON Courses.administrator_id = Student.administrator_id
       JOIN 
-        Department ON Courses.dept_name = Department.dept_name
+        Department ON Courses.department_id = Department.department_id
       WHERE 
-        Department.dept_id = ?`,
-      [departmentId]
+        Department.department_id = ?`,
+      [department_id]
     );
 
     if (results.length === 0) {
@@ -522,27 +578,27 @@ router.get("/students-by-department/:departmentId", async (req, res) => {
 
 // fetching all instructors in a department
 
-router.get("/students-by-department/:departmentId", async (req, res) => {
+router.get("/students-by-department/:department_id", async (req, res) => {
   try {
     const database = await connection;
-    const { departmentId } = req.params;
+    const { department_id } = req.params;
 
     const [results] = await database.execute(
       `SELECT 
-        Student.UIN AS student_uin,
-        Student.name AS student_name,
-        Student.email AS student_email,
-        Department.dept_id AS department_id,
-        Department.dept_name AS department_name
+        Student.student_id AS student_id,
+        Student.student_username AS student_name,
+        Student.student_email AS student_email,
+        Department.department_id AS department_id,
+        Department.department_name AS department_name
       FROM 
         Student
       JOIN 
-        Courses ON Courses.admin_id = Student.admin_id
+        Courses ON Courses.administrator_id = Student.administrator_id
       JOIN 
-        Department ON Courses.dept_name = Department.dept_name
+        Department ON Courses.department_name = Department.department_name
       WHERE 
-        Department.dept_id = ?`,
-      [departmentId]
+        Department.department_id = ?`,
+      [department_id]
     );
 
     if (results.length === 0) {
@@ -556,30 +612,90 @@ router.get("/students-by-department/:departmentId", async (req, res) => {
   }
 });
 
+//fetching the courses along with their pre requisites
 
-// fetching all courses wit their prerequisites
-
-router.get("/prereqs-by-course/:courseId", async (req, res) => {
+router.get("/courses-with-prerequisites/", async (req, res) => {
   try {
-    const { courseId } = req.params;
-    const [results] = await connection.execute(
-      `SELECT 
-        Prereq.course_id AS prereq_course_id,
-        Prereq.course_name AS prereq_course_name,
-        Main.course_id AS course_id,
-        Main.course_name AS course_name
-      FROM 
-        Courses AS Main
-      JOIN 
-        Courses AS Prereq ON Main.prereq_id = Prereq.course_id
-      WHERE 
-        Main.course_id = ?`,
-      [courseId]
-    );
-    res.json(results);
+      const database = await connection;
+
+      const [results] = await database.execute(
+          `SELECT 
+              c1.course_id AS course_id,
+              c1.course_name AS course_name,
+              c2.course_id AS prerequisite_course_id,
+              c2.course_name AS prerequisite_course_name
+          FROM 
+              Courses c1
+          LEFT JOIN 
+              Courses c2
+          ON 
+              c1.prerequisite_course_id = c2.course_id`
+      );
+
+      if (results.length === 0) {
+          return res.status(404).send("No courses found.");
+      }
+
+      res.json(results);
   } catch (error) {
-    console.error("Error fetching prerequisites by course:", error);
-    res.status(500).send("Error fetching prerequisites by course");
+      console.error("Error fetching courses with prerequisites:", error);
+      res.status(500).send("Error fetching courses with prerequisites.");
+  }
+});
+
+//fetching the courses along with their pre requisites by course_id
+
+router.get("/courses-with-prerequisites/:course_id", async (req, res) => {
+  try {
+      const database = await connection;
+      const { course_id } = req.params;
+
+      const [results] = await database.execute(
+        `WITH RECURSIVE PrereqTree AS (
+        SELECT
+          c.course_id,
+          c.course_name,
+          c.prerequisite_course_id,
+          p.course_name AS prerequisite_course_name
+        FROM 
+          Courses c
+        LEFT JOIN
+          Courses p
+        ON
+          c.prerequisite_course_id = p.course_id
+        WHERE 
+          c.course_id = ?
+          
+        UNION ALL
+        
+        SELECT
+          c.course_id,
+          c.course_name,
+          c.prerequisite_course_id,
+          p.course_name AS prerequisite_course_name
+        FROM 
+          Courses c
+        INNER JOIN
+          PrereqTree pt
+        ON
+          c.course_id = pt.prerequisite_course_id
+        LEFT JOIN
+          Courses p
+        ON 
+          c.prerequisite_course_id = p.course_id
+        )
+        SELECT course_id, course_name, prerequisite_course_id, prerequisite_course_name FROM PrereqTree`,
+        [course_id]
+    );
+
+      if (results.length === 0) {
+          return res.status(404).send("No courses found.");
+      }
+
+      res.json(results);
+  } catch (error) {
+      console.error("Error fetching courses with prerequisites:", error);
+      res.status(500).send("Error fetching courses with prerequisites.");
   }
 });
 
