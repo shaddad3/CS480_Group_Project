@@ -10,7 +10,16 @@ import Get_prereqs from "./components/Get_prereqs";
 import Student_info from "./components/Student_info";
 import Register_courses from "./components/Register_courses";
 import AdminDashboard from "./components/AdminDashboard";
+import ViewStudentInformation from "./components/ViewStudentInformation";
 import ManageCourses from "./components/ManageCourses";
+import ManageInstructors from "./components/ManageInstructors";
+import SearchCourses from "./components/SearchCourses";
+import AddCourses from "./components/AddCourses";
+import AddInstructors from "./components/AddInstructors";
+import SearchInstructors from "./components/SearchInstructors";
+import ManageDepartments from "./components/ManageDepartments";
+import SearchDepartments from "./components/SearchDepartments";
+import AddDepartments from "./components/AddDepartments";
 
 import "./App.css";
 
@@ -35,8 +44,18 @@ function App() {
           <Route path="/Get_prereqs" element={<Get_prereqs />} />
           <Route path="/Student_info" element={<Student_info />} />
           <Route path="/Register_courses" element={<Register_courses />} />
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
-          <Route path="/ManageCourses" element={<ManageCourses />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/view-student-information" element={<ViewStudentInformation />} />
+          <Route path="/manage-courses" element={<ManageCourses />} />
+          <Route path="/manage-instructors" element={<ManageInstructors />} />
+          <Route path="/search-courses" element={<SearchCourses />} />
+          <Route path="/add-courses" element={<AddCourses />} />
+          <Route path="/add-instructors" element={<AddInstructors />} />
+          <Route path="/search-instructors" element={<SearchInstructors />} />
+          <Route path="/manage-departments" element={<ManageDepartments />} />
+          <Route path="/search-departments" element={<SearchDepartments />} />
+          <Route path="/add-departments" element={<AddDepartments />} />
+
         </Routes>
       </BrowserRouter>
     </div>
