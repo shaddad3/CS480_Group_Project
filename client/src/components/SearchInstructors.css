@@ -1,0 +1,87 @@
+.search-instructors-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #b34848;
+  color: #000000;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.instructors-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.instructors-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ffffff;
+}
+
+.instructors-table th,
+.instructors-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.instructors-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.instructors-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.instructors-table tr:hover {
+  background-color: #ddd;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #b71c1c;
+}
+
+
+.instructors-menu {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.instructors-menu a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+}
+
+.instructors-menu a:hover {
+  background-color: #0056b3;
+}
