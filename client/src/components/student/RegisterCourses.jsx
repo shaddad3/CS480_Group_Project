@@ -33,7 +33,7 @@ export default function RegisterCourses() {
         return;
       } else {
         await fetchTakesForStudent(user.id);
-        await addTake(user.id, course_id);
+        await addTake(course_id, user.id);
         setMessage("Registration successful!");
         const coursesData = await fetchCourses();
         const takesData = await fetchTakesForStudent(user.id);
