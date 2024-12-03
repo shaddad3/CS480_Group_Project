@@ -78,6 +78,22 @@ export async function fetchCourses() {
   }
 }
 
+export async function deleteCourse(courseId) {
+  try {
+    // const response = await fetch(`${base_url}/delete-course/${courseId}`);
+    const response = await fetch(`${base_url}/delete-course/${courseId}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching all tables:", error);
+  }
+}
+
 // Register for a course
 export async function registerForCourse(studentId, courseId) {
   const response = await fetch(`${base_url}/register-course`, {

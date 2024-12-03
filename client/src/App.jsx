@@ -9,6 +9,8 @@ import Student_dashboard from "./components/Student_dashboard";
 import Get_prereqs from "./components/Get_prereqs";
 import Student_info from "./components/Student_info";
 import Register_courses from "./components/Register_courses";
+import AdminDashboard from "./components/AdminDashboard";
+import ManageCourses from "./components/ManageCourses";
 
 import "./App.css";
 
@@ -33,6 +35,8 @@ function App() {
           <Route path="/Get_prereqs" element={<Get_prereqs />} />
           <Route path="/Student_info" element={<Student_info />} />
           <Route path="/Register_courses" element={<Register_courses />} />
+          <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/ManageCourses" element={<ManageCourses />} />
         </Routes>
       </BrowserRouter>
     </div>

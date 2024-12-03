@@ -346,6 +346,31 @@ router.post("/register-course", async (req, res) => {
   }
 });
 
+// Delete a Course
+router.delete("/delete-course/:course_id", async (req, res) => {
+  const { course_id } = req.params;
+
+  try {
+    const database = await connection;
+
+    // Delete the course from the Courses table
+    const [result] = await database.execute(
+      "DELETE FROM Courses WHERE course_id = ?",
+      [course_id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Course not found." });
+    }
+
+    res.json({ message: "Course deleted successfully." });
+  } catch (error) {
+    console.error("Error deleting course:", error);
+    res.status(500).json({ message: "Error deleting course." });
+  }
+});
+
+
 // Fetch all Teaches
 router.get("/teaches", async (req, res) => {
   try {
