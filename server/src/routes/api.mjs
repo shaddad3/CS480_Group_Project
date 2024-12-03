@@ -372,21 +372,65 @@ export async function fetchCourseNamesTakenByStudent(req, res) {
 export async function CoursesWithPrerequisites(req, res) {
   try {
     console.log("fetching courses with prerequisites");
+    // const database = await connection;
+
+    // const [results] = await database.execute(
+    //   `SELECT
+    //           c1.course_id AS course_id,
+    //           c1.course_name AS course_name,
+    //           c2.course_id AS prerequisite_course_id,
+    //           c2.course_name AS prerequisite_course_name
+    //       FROM
+    //           Courses c1
+    //       LEFT JOIN
+    //           Courses c2
+    //       ON
+    //           c1.prerequisite_course_id = c2.course_id`
+    // );
     const database = await connection;
+    const { course_id } = req.params;
 
     const [results] = await database.execute(
-      `SELECT
-              c1.course_id AS course_id,
-              c1.course_name AS course_name,
-              c2.course_id AS prerequisite_course_id,
-              c2.course_name AS prerequisite_course_name
-          FROM
-              Courses c1
-          LEFT JOIN
-              Courses c2
-          ON
-              c1.prerequisite_course_id = c2.course_id`
+      `WITH RECURSIVE PrereqTree AS (
+      SELECT
+        c.course_id,
+        c.course_name,
+        c.prerequisite_course_id,
+        p.course_name AS prerequisite_course_name
+      FROM 
+        Courses c
+      LEFT JOIN
+        Courses p
+      ON
+        c.prerequisite_course_id = p.course_id
+      WHERE 
+        c.course_id = ?
+        
+      UNION ALL
+      
+      SELECT
+        c.course_id,
+        c.course_name,
+        c.prerequisite_course_id,
+        p.course_name AS prerequisite_course_name
+      FROM 
+        Courses c
+      INNER JOIN
+        PrereqTree pt
+      ON
+        c.course_id = pt.prerequisite_course_id
+      LEFT JOIN
+        Courses p
+      ON 
+        c.prerequisite_course_id = p.course_id
+      )
+      SELECT course_id, course_name, prerequisite_course_id, prerequisite_course_name FROM PrereqTree`,
+      [course_id]
     );
+
+    if (results.length === 0) {
+        return res.status(404).send("No courses found.");
+    }
 
     res.json(results);
   } catch (error) {
