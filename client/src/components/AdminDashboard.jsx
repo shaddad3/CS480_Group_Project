@@ -16,7 +16,7 @@ function AdminDashboard() {
         <Link to="/view-student-information" className="admin-option">
           View Student Information
         </Link>
-        <Link to="/ManageCourses" className="admin-option">
+        <Link to="/manage-courses" className="admin-option">
           Manage Courses
         </Link>
         <Link to="/manage-instructors" className="admin-option">

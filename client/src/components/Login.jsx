@@ -19,7 +19,7 @@ export default function Login() {
       if (user.role === "student") {
         navigate("/Student_dashboard");
       } else if (user.role === "administrator") {
-        navigate("/AdminDashboard");
+        navigate("/admin-dashboard");
       }
     }
   }, [user, navigate]);
@@ -34,7 +34,7 @@ export default function Login() {
       if (user.role === "student") {
         navigate("/Student_dashboard");
       } else if (user.role === "administrator") {
-        navigate("/AdminDashboard");
+        navigate("/admin-dashboard");
       }
     }
   };
