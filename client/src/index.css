@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  box-sizing: border-box;
-
   --background_white: #f5f5f5;
   --white: #ffffff;
   --bright_blue: #007bff;
   --darker_blue: #0056b3;
   --black: #1c1c1c;
   --grey: #aaaaaa;
-  --lightgrey: #cccccc;
+  --light_grey: #cccccc;
+  --dark_grey: #9a9a9a;
+
+  --navbar_height: 60px;
+  --sidenavigation_width: 300px;
 
   font-family: "Inter", sans-serif;
 
@@ -17,6 +19,8 @@
 
   margin: 0px;
   padding: 0px;
+
+  overflow: hidden;
 }
 
 body {
@@ -39,5 +43,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--lightgrey);
+  background: var(--dark_grey);
 }

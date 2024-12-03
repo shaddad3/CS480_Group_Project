@@ -1,3 +1,5 @@
+USE course_registration_website;
+
 INSERT INTO
     Administrator (
         administrator_username,
@@ -270,7 +272,7 @@ VALUES (
         'Monday',
         '9:00 AM - 11:00 AM',
         'Room 101',
-        30,
+        10,
         NULL,
         1,
         1
@@ -282,7 +284,7 @@ VALUES (
         'Tuesday',
         '10:00 AM - 12:00 PM',
         'Room 202',
-        25,
+        10,
         1,
         2,
         1
@@ -294,7 +296,7 @@ VALUES (
         'Wednesday',
         '1:00 PM - 3:00 PM',
         'Room 103',
-        20,
+        10,
         1,
         3,
         1
@@ -306,7 +308,7 @@ VALUES (
         'Thursday',
         '2:00 PM - 4:00 PM',
         'Room 301',
-        15,
+        10,
         2,
         4,
         1
@@ -318,7 +320,7 @@ VALUES (
         'Monday',
         '8:00 AM - 10:00 AM',
         'Room 104',
-        30,
+        10,
         NULL,
         1,
         2
@@ -330,7 +332,7 @@ VALUES (
         'Tuesday',
         '9:30 AM - 11:30 AM',
         'Room 205',
-        40,
+        10,
         5,
         2,
         2
@@ -342,7 +344,7 @@ VALUES (
         'Wednesday',
         '10:00 AM - 12:00 PM',
         'Room 106',
-        35,
+        10,
         NULL,
         3,
         2
@@ -354,7 +356,7 @@ VALUES (
         'Thursday',
         '1:00 PM - 3:00 PM',
         'Room 107',
-        25,
+        10,
         7,
         4,
         2
@@ -366,7 +368,7 @@ VALUES (
         'Monday',
         '11:00 AM - 1:00 PM',
         'Room 108',
-        50,
+        10,
         NULL,
         1,
         3
@@ -378,7 +380,7 @@ VALUES (
         'Tuesday',
         '8:00 AM - 10:00 AM',
         'Room 109',
-        40,
+        10,
         9,
         2,
         3
@@ -390,7 +392,7 @@ VALUES (
         'Wednesday',
         '2:00 PM - 4:00 PM',
         'Room 110',
-        45,
+        10,
         9,
         3,
         3
@@ -402,7 +404,7 @@ VALUES (
         'Thursday',
         '10:00 AM - 12:00 PM',
         'Room 111',
-        30,
+        10,
         10,
         4,
         3
@@ -414,7 +416,7 @@ VALUES (
         'Monday',
         '9:00 AM - 11:00 AM',
         'Room 201',
-        25,
+        10,
         NULL,
         1,
         4
@@ -426,7 +428,7 @@ VALUES (
         'Tuesday',
         '1:00 PM - 3:00 PM',
         'Room 202',
-        40,
+        10,
         13,
         2,
         4
@@ -438,7 +440,7 @@ VALUES (
         'Wednesday',
         '10:00 AM - 12:00 PM',
         'Room 203',
-        35,
+        10,
         14,
         3,
         4
@@ -450,7 +452,7 @@ VALUES (
         'Thursday',
         '2:00 PM - 4:00 PM',
         'Room 204',
-        50,
+        10,
         13,
         4,
         4
@@ -462,7 +464,7 @@ VALUES (
         'Monday',
         '8:00 AM - 10:00 AM',
         'Room 301',
-        30,
+        10,
         NULL,
         1,
         5
@@ -474,7 +476,7 @@ VALUES (
         'Tuesday',
         '10:00 AM - 12:00 PM',
         'Room 302',
-        20,
+        10,
         17,
         2,
         5
@@ -486,7 +488,7 @@ VALUES (
         'Wednesday',
         '1:00 PM - 3:00 PM',
         'Room 303',
-        25,
+        10,
         17,
         3,
         5
@@ -498,7 +500,7 @@ VALUES (
         'Thursday',
         '2:00 PM - 4:00 PM',
         'Room 304',
-        30,
+        10,
         18,
         4,
         5
@@ -963,492 +965,6 @@ VALUES (
         'yasmine.harris@uic.edu',
         'phd',
         3
-    ),
-    (
-        'zoechavez',
-        'stu',
-        'Zoe',
-        'Chavez',
-        'zoe.chavez@uic.edu',
-        'graduate',
-        4
-    ),
-    (
-        'andrewsanchez',
-        'vwx',
-        'Andrew',
-        'Sanchez',
-        'andrew.sanchez@uic.edu',
-        'undergraduate',
-        1
-    ),
-    (
-        'briancameron',
-        'yzx',
-        'Brian',
-        'Cameron',
-        'brian.cameron@uic.edu',
-        'phd',
-        2
-    ),
-    (
-        'carolinemoore',
-        'abc',
-        'Caroline',
-        'Moore',
-        'caroline.moore@uic.edu',
-        'graduate',
-        3
-    ),
-    (
-        'davidperez',
-        'def',
-        'David',
-        'Perez',
-        'david.perez@uic.edu',
-        'undergraduate',
-        4
-    ),
-    (
-        'eleanorwillis',
-        'ghi',
-        'Eleanor',
-        'Willis',
-        'eleanor.willis@uic.edu',
-        'phd',
-        1
-    ),
-    (
-        'felixdavis',
-        'jkl',
-        'Felix',
-        'Davis',
-        'felix.davis@uic.edu',
-        'graduate',
-        2
-    ),
-    (
-        'gordonadams',
-        'mno',
-        'Gordon',
-        'Adams',
-        'gordon.adams@uic.edu',
-        'undergraduate',
-        3
-    ),
-    (
-        'andrewthomas',
-        'abc',
-        'Andrew',
-        'Thomas',
-        'andrew.thomas@uic.edu',
-        'undergraduate',
-        1
-    ),
-    (
-        'briannjohnson',
-        'def',
-        'Briann',
-        'Johnson',
-        'briann.johnson@uic.edu',
-        'graduate',
-        2
-    ),
-    (
-        'carlosgarcia',
-        'ghi',
-        'Carlos',
-        'Garcia',
-        'carlos.garcia@uic.edu',
-        'phd',
-        3
-    ),
-    (
-        'danieljackson',
-        'jkl',
-        'Daniel',
-        'Jackson',
-        'daniel.jackson@uic.edu',
-        'undergraduate',
-        4
-    ),
-    (
-        'ellaevans',
-        'mno',
-        'Ella',
-        'Evans',
-        'ella.evans@uic.edu',
-        'graduate',
-        1
-    ),
-    (
-        'felixroberts',
-        'pqr',
-        'Felix',
-        'Roberts',
-        'felix.roberts@uic.edu',
-        'phd',
-        2
-    ),
-    (
-        'gabrielmorris',
-        'stu',
-        'Gabriel',
-        'Morris',
-        'gabriel.morris@uic.edu',
-        'undergraduate',
-        3
-    ),
-    (
-        'hannahdavis',
-        'vwx',
-        'Hannah',
-        'Davis',
-        'hannah.davis@uic.edu',
-        'graduate',
-        4
-    ),
-    (
-        'ignaciobaker',
-        'yzx',
-        'Ignacio',
-        'Baker',
-        'ignacio.baker@uic.edu',
-        'phd',
-        1
-    ),
-    (
-        'jenniferwilson',
-        'abc',
-        'Jennifer',
-        'Wilson',
-        'jennifer.wilson@uic.edu',
-        'undergraduate',
-        2
-    ),
-    (
-        'karlwhite',
-        'def',
-        'Karl',
-        'White',
-        'karl.white@uic.edu',
-        'graduate',
-        3
-    ),
-    (
-        'lindaharris',
-        'ghi',
-        'Linda',
-        'Harris',
-        'linda.harris@uic.edu',
-        'phd',
-        4
-    ),
-    (
-        'mariaallen',
-        'jkl',
-        'Maria',
-        'Allen',
-        'maria.allen@uic.edu',
-        'undergraduate',
-        1
-    ),
-    (
-        'nicolaswilliams',
-        'mno',
-        'Nicolas',
-        'Williams',
-        'nicolas.williams@uic.edu',
-        'graduate',
-        2
-    ),
-    (
-        'olivierbrown',
-        'pqr',
-        'Olivier',
-        'Brown',
-        'olivier.brown@uic.edu',
-        'phd',
-        3
-    ),
-    (
-        'pamelawilkins',
-        'stu',
-        'Pamela',
-        'Wilkins',
-        'pamela.wilkins@uic.edu',
-        'undergraduate',
-        4
-    ),
-    (
-        'quinnrodriguez',
-        'yzx',
-        'Quinn',
-        'Rodriguez',
-        'quinn.rodriguez@uic.edu',
-        'graduate',
-        1
-    ),
-    (
-        'raquelthompson',
-        'abc',
-        'Raquel',
-        'Thompson',
-        'raquel.thompson@uic.edu',
-        'phd',
-        2
-    ),
-    (
-        'sebastianlopez',
-        'def',
-        'Sebastian',
-        'Lopez',
-        'sebastian.lopez@uic.edu',
-        'undergraduate',
-        3
-    ),
-    (
-        'tessasmith',
-        'ghi',
-        'Tessa',
-        'Smith',
-        'tessa.smith@uic.edu',
-        'graduate',
-        4
-    ),
-    (
-        'ursulaallen',
-        'jkl',
-        'Ursula',
-        'Allen',
-        'ursula.allen@uic.edu',
-        'phd',
-        1
-    ),
-    (
-        'vincentsanchez',
-        'mno',
-        'Vincent',
-        'Sanchez',
-        'vincent.sanchez@uic.edu',
-        'undergraduate',
-        2
-    ),
-    (
-        'williambennett',
-        'pqr',
-        'William',
-        'Bennett',
-        'william.bennett@uic.edu',
-        'graduate',
-        3
-    ),
-    (
-        'xeniasmith',
-        'stu',
-        'Xenia',
-        'Smith',
-        'xenia.smith@uic.edu',
-        'phd',
-        4
-    ),
-    (
-        'yolandahunter',
-        'yzx',
-        'Yolanda',
-        'Hunter',
-        'yolanda.hunter@uic.edu',
-        'undergraduate',
-        1
-    ),
-    (
-        'zacharymartinez',
-        'abc',
-        'Zachary',
-        'Martinez',
-        'zachary.martinez@uic.edu',
-        'graduate',
-        2
-    ),
-    (
-        'aaronsmith',
-        'def',
-        'Aaron',
-        'Smith',
-        'aaron.smith@uic.edu',
-        'phd',
-        3
-    ),
-    (
-        'bethanyjones',
-        'ghi',
-        'Bethany',
-        'Jones',
-        'bethany.jones@uic.edu',
-        'undergraduate',
-        4
-    ),
-    (
-        'caitlynchavez',
-        'jkl',
-        'Caitlyn',
-        'Chavez',
-        'caitlyn.chavez@uic.edu',
-        'graduate',
-        1
-    ),
-    (
-        'daniellewalker',
-        'mno',
-        'Danielle',
-        'Walker',
-        'danielle.walker@uic.edu',
-        'phd',
-        2
-    ),
-    (
-        'ethanbrown',
-        'pqr',
-        'Ethan',
-        'Brown',
-        'ethan.brown@uic.edu',
-        'undergraduate',
-        3
-    ),
-    (
-        'fionalewis',
-        'stu',
-        'Fiona',
-        'Lewis',
-        'fiona.lewis@uic.edu',
-        'graduate',
-        4
-    ),
-    (
-        'gabriellawilson',
-        'yzx',
-        'Gabriella',
-        'Wilson',
-        'gabriella.wilson@uic.edu',
-        'phd',
-        1
-    ),
-    (
-        'hayleygreen',
-        'abc',
-        'Hayley',
-        'Green',
-        'hayley.green@uic.edu',
-        'undergraduate',
-        2
-    ),
-    (
-        'ivanperez',
-        'def',
-        'Ivan',
-        'Perez',
-        'ivan.perez@uic.edu',
-        'graduate',
-        3
-    ),
-    (
-        'jacquelinesmith',
-        'ghi',
-        'Jacqueline',
-        'Smith',
-        'jacqueline.smith@uic.edu',
-        'phd',
-        4
-    ),
-    (
-        'kendallhill',
-        'jkl',
-        'Kendall',
-        'Hill',
-        'kendall.hill@uic.edu',
-        'undergraduate',
-        1
-    ),
-    (
-        'lucylong',
-        'mno',
-        'Lucy',
-        'Long',
-        'lucy.long@uic.edu',
-        'graduate',
-        2
-    ),
-    (
-        'martinbrown',
-        'pqr',
-        'Martin',
-        'Brown',
-        'martin.brown@uic.edu',
-        'phd',
-        3
-    ),
-    (
-        'nataliecooper',
-        'stu',
-        'Natalie',
-        'Cooper',
-        'natalie.cooper@uic.edu',
-        'undergraduate',
-        4
-    ),
-    (
-        'oliversmith',
-        'yzx',
-        'Oliver',
-        'Smith',
-        'oliver.smith@uic.edu',
-        'graduate',
-        1
-    ),
-    (
-        'paigeadams',
-        'abc',
-        'Paige',
-        'Adams',
-        'paige.adams@uic.edu',
-        'phd',
-        2
-    ),
-    (
-        'quinnbrooks',
-        'def',
-        'Quinn',
-        'Brooks',
-        'quinn.brooks@uic.edu',
-        'undergraduate',
-        3
-    ),
-    (
-        'ryansmith',
-        'ghi',
-        'Ryan',
-        'Smith',
-        'ryan.smith@uic.edu',
-        'graduate',
-        4
-    ),
-    (
-        'sophiaroberts',
-        'jkl',
-        'Sophia',
-        'Roberts',
-        'sophia.roberts@uic.edu',
-        'phd',
-        1
-    ),
-    (
-        'trinitywhite',
-        'mno',
-        'Trinity',
-        'White',
-        'trinity.white@uic.edu',
-        'undergraduate',
-        2
     );
 
 INSERT INTO
@@ -1524,54 +1040,4 @@ VALUES (1, 1),
     (6, 46),
     (7, 47),
     (8, 48),
-    (9, 49),
-    (10, 50),
-    (11, 51),
-    (12, 52),
-    (13, 53),
-    (14, 54),
-    (15, 55),
-    (16, 56),
-    (17, 57),
-    (18, 58),
-    (19, 59),
-    (20, 60),
-    (1, 61),
-    (2, 62),
-    (3, 63),
-    (4, 64),
-    (5, 65),
-    (6, 66),
-    (7, 67),
-    (8, 68),
-    (9, 69),
-    (10, 70),
-    (11, 71),
-    (12, 72),
-    (13, 73),
-    (14, 74),
-    (15, 75),
-    (16, 76),
-    (17, 77),
-    (18, 78),
-    (19, 79),
-    (20, 80),
-    (1, 81),
-    (2, 82),
-    (3, 83),
-    (4, 84),
-    (5, 85),
-    (6, 86),
-    (7, 87),
-    (8, 88),
-    (9, 89),
-    (10, 90),
-    (11, 91),
-    (12, 92),
-    (13, 93),
-    (14, 94),
-    (15, 95),
-    (16, 96),
-    (17, 97),
-    (18, 98),
-    (19, 99);
+    (9, 49);

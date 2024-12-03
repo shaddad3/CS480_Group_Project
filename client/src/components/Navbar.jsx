@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Context } from "../Context";
-import { logout } from "../api/api";
+import { logout } from "../api/authentication";
 
 import "./Navbar.css";
 import logo from "../assests/logo.jpg";
@@ -26,7 +26,7 @@ export default function Navbar() {
 
       <ul className="navbarlist">
         <li className="navbaritem">
-          {user && `Welcome, ${user.first_name} ${user.last_name}!`}
+          {user && `${user.first_name} ${user.last_name} (${user.role})`}
         </li>
         <li className="navbaritem">
           {user && (

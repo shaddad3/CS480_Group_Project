@@ -1,79 +1,81 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-  
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  
-    background-color: var(--white);
-  
-    width: 100%;
-  
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-  }
-  
-  .logoandcompanyname {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  
-  .companyname {
-    font-size: 1.5rem;
-    font-weight: bold;
-  
-    color: var(--black);
-  
-    text-decoration: none;
-  
-    padding-right: 15px;
-  }
-  
-  .logo {
-    max-height: 60px;
-    max-width: 60px;
-  
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  .navbarlink {
-    color: var(--black);
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .navbarlist {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-  
-    list-style: none;
-  
-    margin: 0px;
-    padding-right: 15px;
-  }
-  
-  .navbaritem {
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  .logoutbutton {
-    background-color: #ff4b5c;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .logoutbutton:hover {
-    background-color: #ff1f3a;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: var(--white);
+
+  width: 100%;
+
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+
+  border-bottom: 1px solid var(--light_grey);
+}
+
+.logoandcompanyname {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.companyname {
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  color: var(--black);
+
+  text-decoration: none;
+
+  padding-right: 15px;
+}
+
+.logo {
+  max-height: 60px;
+  max-width: 60px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbarlink {
+  color: var(--black);
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.navbarlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+
+  list-style: none;
+
+  margin: 0px;
+  padding-right: 15px;
+}
+
+.navbaritem {
+  margin: 0px;
+  padding: 0px;
+}
+
+.logoutbutton {
+  background-color: var(--bright_blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.logoutbutton:hover {
+  background-color: #ff1f3a;
+}

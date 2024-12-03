@@ -1,22 +1,21 @@
 import { useState } from "react";
-import "./Get_prereqs.css";
-import { fetchCoursePrereqs } from "../api/api";
+import "./GetPrerequisites.css";
+import { fetchCoursePrerequisites } from "../../api/student";
 
-export default function Get_prereqs() {
-  const [courseId, setCourseId] = useState(""); // Input for course ID
-  const [prerequisites, setPrerequisites] = useState([]); // Prerequisite results
-  const [error, setError] = useState(""); // Error handling
-  const [loading, setLoading] = useState(false); // Loading state
+export default function GetPrerequisites() {
+  const [courseId, setCourseId] = useState("");
+  const [prerequisites, setPrerequisites] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Reset error
-    setPrerequisites([]); // Clear previous results
-    setLoading(true); // Set loading state
+    setError("");
+    setPrerequisites([]);
+    setLoading(true);
 
     try {
-      const data = await fetchCoursePrereqs(courseId);
+      const data = await fetchCoursePrerequisites(courseId);
       if (data.length === 0) {
         setError("No prerequisites found for this course.");
       } else {

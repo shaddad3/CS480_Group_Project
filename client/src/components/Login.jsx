@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { login } from "../api/api";
+import { login } from "../api/authentication";
 import { Context } from "../Context";
 
 import "./Login.css";
@@ -15,12 +15,7 @@ export default function Login() {
 
   useEffect(() => {
     if (user) {
-      // Redirect based on role
-      if (user.role === "student") {
-        navigate("/Student_dashboard");
-      } else if (user.role === "administrator") {
-        navigate("/AdminDashboard");
-      }
+      navigate("/dashboard");
     }
   }, [user, navigate]);
 
@@ -28,21 +23,13 @@ export default function Login() {
     event.preventDefault();
     const user = await login(username, password);
     setUser(user);
-    // navigate("/dashboard");
-    if (user) {
-      // Redirect based on role
-      if (user.role === "student") {
-        navigate("/Student_dashboard");
-      } else if (user.role === "administrator") {
-        navigate("/AdminDashboard");
-      }
-    }
+    navigate("/dashboard");
   };
 
   return (
     <div className="login">
       <div className="loginbox">
-        <h1>Login</h1>
+        <h1>Student Login</h1>
         <form className="loginform" onSubmit={handleLogin}>
           <label className="loginlabel" htmlFor="username">
             Username
