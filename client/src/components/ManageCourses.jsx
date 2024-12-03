@@ -1,98 +1,26 @@
-import { useEffect, useState } from "react";
-import { fetchCourses, deleteCourse } from "../api/api";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./ManageCourses.css";
 
-export default function ManageCourses() {
-  const [courses, setCourses] = useState([]);
-  const [courseId, setCourseId] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const getCourses = async () => {
-      try {
-        const coursesData = await fetchCourses();
-        setCourses(coursesData);
-        setLoading(false);
-      } catch (err) {
-        console.error("Error fetching courses:", err);
-        setError("Failed to load courses");
-        setLoading(false);
-      }
-    };
-
-    getCourses();
-  }, []);
-
-  const handleDelete = async (event) => {
-    event.preventDefault();
-    setMessage("");
-    try {
-      await deleteCourse(courseId);
-      setMessage("Course deleted successfully!");
-      setCourses(courses.filter((course) => course.course_id !== parseInt(courseId)));
-    } catch (err) {
-      console.error("Error deleting course:", err);
-      setMessage("Failed to delete course. Please try again.");
-    }
-  };
-
+function ManageCourses() {
   return (
-    <div className="manage-courses">
-      <h1>Manage Courses</h1>
-      <form onSubmit={handleDelete} className="delete-form">
-        <h2>Delete a Course</h2>
-        <label htmlFor="courseId">Course ID:</label>
-        <input
-          type="text"
-          id="courseId"
-          value={courseId}
-          onChange={(e) => setCourseId(e.target.value)}
-          required
-        />
-        <button type="submit">Delete Course</button>
-      </form>
-
-      {message && <p className="message">{message}</p>}
-
-      {loading && <p>Loading courses...</p>}
-      {error && <p className="error">{error}</p>}
-
-      {!loading && courses.length > 0 && (
-        <table>
-          <thead>
-            <tr>
-              <th>Course ID</th>
-              <th>Course Name</th>
-              <th>Credits</th>
-              <th>Instruction Method</th>
-              <th>Lecture Day</th>
-              <th>Lecture Time</th>
-              <th>Lecture Location</th>
-              <th>Available Seats</th>
-              <th>Prerequisite Course ID</th>
-              <th>Department ID</th>
-            </tr>
-          </thead>
-          <tbody>
-            {courses.map((course) => (
-              <tr key={course.course_id}>
-                <td>{course.course_id}</td>
-                <td>{course.course_name}</td>
-                <td>{course.course_credits}</td>
-                <td>{course.course_instruction_method}</td>
-                <td>{course.course_lecture_day}</td>
-                <td>{course.course_lecture_time}</td>
-                <td>{course.course_lecture_location}</td>
-                <td>{course.course_available_seats}</td>
-                <td>{course.prerequisite_course_id}</td>
-                <td>{course.department_id}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+    <div className="manage-courses-page">
+      <div className="manage-courses-header">
+        <h1>Manage Courses</h1>
+      </div>
+      <div className="manage-courses-options">
+        <Link to="/search-courses" className="courses-option">Search Courses</Link>
+        <Link to="/add-courses" className="courses-option">Add Courses</Link>
+      </div>
+      <div className="manage-courses-menu">
+        <Link to="/admin-dashboard">Home</Link>
+        <Link to="/view-student-information">View Student Information</Link>
+        <Link to="/manage-courses">Manage Courses</Link>
+        <Link to="/manage-instructors">Manage Instructors</Link>
+        <Link to="/manage-departments">Manage Departments</Link>
+      </div>
     </div>
   );
 }
+
+export default ManageCourses;
