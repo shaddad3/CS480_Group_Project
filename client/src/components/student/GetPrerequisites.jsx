@@ -1,6 +1,8 @@
 import { useState } from "react";
+
+import { fetchCoursePrerequisites } from "../../api/api";
+
 import "./GetPrerequisites.css";
-import { fetchCoursePrerequisites } from "../../api/student";
 
 export default function GetPrerequisites() {
   const [courseId, setCourseId] = useState("");
@@ -16,6 +18,8 @@ export default function GetPrerequisites() {
 
     try {
       const data = await fetchCoursePrerequisites(courseId);
+      console.log(data);
+
       if (data.length === 0) {
         setError("No prerequisites found for this course.");
       } else {
@@ -25,7 +29,7 @@ export default function GetPrerequisites() {
       console.error("Error fetching prerequisites:", err);
       setError("Error fetching prerequisites. Please try again later.");
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false);
     }
   };
 

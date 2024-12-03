@@ -8,6 +8,8 @@
   align-items: left;
   justify-content: center;
 
+  padding-bottom: 50px;
+
   border: 1px solid #cccccc;
   border-radius: 15px;
 }
@@ -52,6 +54,101 @@
 }
 
 .tilebutton:hover {
-  background-color: var(--darker_blue);
+  background-color: var(--dark_blue);
+}
+
+.tiledeletebutton {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  padding: 10px 20px;
+  background-color: var(--bright_red);
   color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tiledeletebutton:hover {
+  background-color: var(--dark_red);
+}
+
+/*********************************************************************************************/
+.form {
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  padding: 15px;
+
+  width: 100%;
+}
+
+.formlabel {
+  display: inline-block;
+  width: 100%;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.forminput {
+  display: block;
+
+  padding: 15px;
+
+  font-size: 16px;
+
+  color: var(--black);
+  background-color: var(--background_white);
+
+  border: 1px solid var(--grey);
+  border-radius: 15px;
+
+  outline: none;
+
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.forminput:focus {
+  border-color: var(--bright_blue);
+}
+
+.forminput::placeholder {
+  color: var(--grey);
+
+  font-style: italic;
+}
+
+.editanddelete {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  display: flex;
+  gap: 15px;
+}
+
+.editbutton {
+  padding: 10px 20px;
+  background-color: var(--bright_blue);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deletebutton {
+  padding: 10px 20px;
+  background-color: var(--bright_red);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }

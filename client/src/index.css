@@ -4,11 +4,13 @@
   --background_white: #f5f5f5;
   --white: #ffffff;
   --bright_blue: #007bff;
-  --darker_blue: #0056b3;
+  --dark_blue: #0056b3;
   --black: #1c1c1c;
   --grey: #aaaaaa;
   --light_grey: #cccccc;
   --dark_grey: #9a9a9a;
+  --bright_red: #ff4d4d;
+  --dark_red: #b22222;
 
   --navbar_height: 60px;
   --sidenavigation_width: 300px;

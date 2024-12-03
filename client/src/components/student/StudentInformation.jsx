@@ -1,12 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 
 import { Context } from "../../Context";
-import { fetchStudentCourses } from "../../api/student";
-
-import "./StudentInformation.css";
+import { fetchCourseNamesTakenByStudent } from "../../api/api";
 
 export default function StudentInformation() {
-  const { user, setUser } = useContext(Context); // Get the currently logged-in student
+  const { user, setUser } = useContext(Context);
   const [studentCourses, setStudentCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -14,7 +12,9 @@ export default function StudentInformation() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const courses = await fetchStudentCourses(user.id); // Fetch courses using student_id
+        const courses = await fetchCourseNamesTakenByStudent(user.id);
+        console.log(courses);
+
         setStudentCourses(courses);
         setLoading(false);
       } catch (error) {

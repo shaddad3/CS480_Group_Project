@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 
 import { Context } from "../../Context";
-import { fetchAdministrators } from "../../api/administrator";
+import { fetchAdministrators } from "../../api/api";
 
 import "../../styles/common.css";
 
@@ -51,6 +51,7 @@ export default function ManageAdministrators() {
   return (
     <>
       <h1>Manage Administrators</h1>
+
       {message && <p className="message">{message}</p>}
 
       {loading && <p>Loading administrators...</p>}

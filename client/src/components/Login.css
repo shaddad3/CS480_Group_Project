@@ -57,7 +57,7 @@
 }
 
 .loginbutton:hover {
-  background-color: var(--darker_blue);
+  background-color: var(--dark_blue);
 }
 
 .loginlabel {
@@ -88,8 +88,6 @@
 
 .logininput:focus {
   border-color: var(--bright_blue);
-
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .logininput::placeholder {

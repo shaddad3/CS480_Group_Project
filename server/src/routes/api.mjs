@@ -151,23 +151,31 @@ export async function addInstructor(req, res) {
 export async function addCourse(req, res) {
   const {
     course_name,
-    course_description,
-    course_credit_hours,
+    course_credits,
+    course_instruction_method,
+    course_lecture_day,
+    course_lecture_time,
+    course_lecture_location,
+    course_available_seats,
     prerequisite_course_id,
+    administrator_id,
     department_id,
-    instructor_id,
   } = req.body;
   try {
     const database = await connection;
     await database.execute(
-      `INSERT INTO Courses (course_name, course_description, course_credit_hours, prerequisite_course_id, department_id, instructor_id) VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO Courses (course_name, course_credits, course_instruction_method, course_lecture_day, course_lecture_time, course_lecture_location, course_available_seats, prerequisite_course_id, administrator_id, department_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         course_name,
-        course_description,
-        course_credit_hours,
+        course_credits,
+        course_instruction_method,
+        course_lecture_day,
+        course_lecture_time,
+        course_lecture_location,
+        course_available_seats,
         prerequisite_course_id,
+        administrator_id,
         department_id,
-        instructor_id,
       ]
     );
     res.status(201).send("Course added successfully");
@@ -184,19 +192,24 @@ export async function addStudent(req, res) {
     student_first_name,
     student_last_name,
     student_email,
-    department_id,
+    student_level,
+    administrator_id,
   } = req.body;
   try {
+    console.log("Adding student");
+    console.log(student_username);
+
     const database = await connection;
     await database.execute(
-      `INSERT INTO Student (student_username, student_password, student_first_name, student_last_name, student_email, department_id) VALUES (?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO Student (student_username, student_password, student_first_name, student_last_name, student_email, student_level, administrator_id) VALUES (?, ?, ?, ?, ?, ?, ?)`,
       [
         student_username,
         student_password,
         student_first_name,
         student_last_name,
         student_email,
-        department_id,
+        student_level,
+        administrator_id,
       ]
     );
     res.status(201).send("Student added successfully");
@@ -207,12 +220,12 @@ export async function addStudent(req, res) {
 }
 
 export async function addTake(req, res) {
-  const { student_id, course_id } = req.body;
+  const { course_id, student_id } = req.body;
   try {
     const database = await connection;
     await database.execute(
-      `INSERT INTO Takes (student_id, course_id) VALUES (?, ?)`,
-      [student_id, course_id]
+      `INSERT INTO Takes (course_id ,student_id) VALUES (?, ?)`,
+      [course_id, student_id]
     );
 
     res.json({ message: "Course registered successfully." });
